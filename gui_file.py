@@ -1,4 +1,15 @@
 # -*- coding: utf-8 -*-
+
+"""
+---
+git log --pretty=format:"%h %s" --graph
+---
+
+makes graph of commits, looks nice, is in plain text.
+
+
+"""
+
 import json
 import os
 import subprocess
