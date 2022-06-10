@@ -153,8 +153,12 @@ def frame_commands():
         with DatabaseObject(db_file) as dbo:
             for project_row in dbo.get_projects():
                 loc = project_row['project_location']
+                vcs_upstream = project_row['vcs_upstream']
                 os.chdir(loc)
                 os.system(f"git add --all; git commit -m \"autocompile {now}\"")
+
+                print(vcs_upstream)
+
         os.chdir(cwd)
 
     imgui.end()
