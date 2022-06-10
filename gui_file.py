@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import os
 import subprocess
 import sys
@@ -32,6 +33,44 @@ if not os.path.exists("hackertyper.txt"):
 
 def gln(n):
     return f"{str(n).rjust(5)}\t"
+
+
+def gst(location):
+    cwd = os.getcwd()
+    os.chdir(location)
+    res = subprocess.check_output(['git', 'status'])
+    res = res.decode('utf-8')
+    os.chdir(cwd)
+
+    bits = {
+        "dirty": False,
+        "untracked": False,
+        "ahead": False,
+        "newfile": False,
+        "renamed": False,
+        "deleted": False
+    }
+
+    bit_chars = {
+        "renamed": ">",
+        "ahead": "*",
+        "newfile": "+",
+        "untracked": "?",
+        "deleted": "x",
+        "dirty": "!",
+    }
+
+    for line in res.split("\n"):
+        for key, grep in zip(
+            ["dirty", "untracked", "ahead", "newfile", "renamed", "deleted"],
+            ["modified:", "Untracked files", "Your branch is ahead of", "new file:", "renamed:", "deleted:"]
+        ):
+            if grep in line:
+                bits[key] = True
+
+    bits_str = "".join([bit_chars[key] for key in bit_chars.keys() if bits[key]])
+    return bits_str
+
 
 
 def get_ram_usage():
@@ -87,13 +126,16 @@ def frame_commands():
             loc = project_row['project_location']
             cat_id = project_row['category_id']
             vcs_upstream = project_row['vcs_upstream']
+
+            status = gst(loc)
+
             if vcs_upstream is None:
                 vcs_upstream = "Local"
             vcs_upstream = f"Git Upstream: {vcs_upstream}"
             button_text = [
                 cats[cat_id] + ": " + name,
-                "\t~/"+os.path.relpath(loc, os.path.expanduser('~')),
-                "\t" + vcs_upstream
+                f"\t~/{os.path.relpath(loc, os.path.expanduser('~'))}",
+                f"\t{vcs_upstream} ({status})"
             ]
             if imgui.button("\n".join(button_text)):
                 cwd = os.getcwd()
