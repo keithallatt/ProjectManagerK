@@ -128,6 +128,8 @@ def frame_commands():
             vcs_upstream = project_row['vcs_upstream']
 
             status = gst(loc)
+            if status:
+                status = f" ({status})"
 
             if vcs_upstream is None:
                 vcs_upstream = "Local"
@@ -135,7 +137,7 @@ def frame_commands():
             button_text = [
                 cats[cat_id] + ": " + name,
                 f"\t~/{os.path.relpath(loc, os.path.expanduser('~'))}",
-                f"\t{vcs_upstream} ({status})"
+                f"\t{vcs_upstream}{status}"
             ]
             if imgui.button("\n".join(button_text)):
                 cwd = os.getcwd()
