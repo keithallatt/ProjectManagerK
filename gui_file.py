@@ -157,7 +157,8 @@ def frame_commands():
                 os.chdir(loc)
                 os.system(f"git add --all; git commit -m \"autocompile {now}\"")
 
-                print(vcs_upstream)
+                if vcs_upstream is not None:
+                    os.system("git push")
 
         os.chdir(cwd)
 
