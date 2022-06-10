@@ -144,24 +144,6 @@ def frame_commands():
                 os.chdir(loc)
                 os.system(f"gnome-terminal")
                 os.chdir(cwd)
-
-    imgui.text("---------")
-
-    if imgui.button("test"):
-        cwd = os.getcwd()
-        now = datetime.now().strftime("%y/%m/%d - %H:%M:%S")
-        with DatabaseObject(db_file) as dbo:
-            for project_row in dbo.get_projects():
-                loc = project_row['project_location']
-                vcs_upstream = project_row['vcs_upstream']
-                os.chdir(loc)
-                os.system(f"git add --all; git commit -m \"autocompile {now}\"")
-
-                if vcs_upstream is not None:
-                    os.system("git push")
-
-        os.chdir(cwd)
-
     imgui.end()
 
     # column 2
@@ -250,7 +232,25 @@ def frame_commands():
 
     imgui.set_next_window_size(column_widths[column_index], height - 850)
     imgui.set_next_window_position(x_positions[column_index], 800)
-    imgui.begin("filler 1", flags=no_title_no_resize)
+    imgui.begin("code commit", flags=no_title_no_resize)
+
+    if imgui.button(" - Commit Code - "):
+        cwd = os.getcwd()
+        now = datetime.now().strftime("%y/%m/%d - %H:%M:%S")
+        with DatabaseObject(db_file) as dbo:
+            for project_row in dbo.get_projects():
+                loc = project_row['project_location']
+                vcs_upstream = project_row['vcs_upstream']
+                os.chdir(loc)
+                os.system(f"git add --all; git commit -m \"autocompile {now}\"")
+
+                if vcs_upstream is not None:
+                    os.system("git push")
+
+        os.chdir(cwd)
+
+
+
     imgui.end()
 
     # column 4
