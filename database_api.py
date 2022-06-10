@@ -25,7 +25,7 @@ table_rows = {
         "created DATETIME NOT NULL",
         "modified DATETIME NOT NULL",
         "project_board TEXT",  # project_board file.
-        "vcs_url TEXT",  # url to any vcs service.
+        "vcs_upstream TEXT",  # url to any vcs service.
         "category_id INT",
         "FOREIGN KEY (category_id) REFERENCES categories (category_id)",
     ],
@@ -137,11 +137,13 @@ class DatabaseObject:
     def register_category(self, category_name):
         self.add_row("categories", {"category_name": category_name})
 
-    def update_project(self, project_name, project_location=None, project_board=None, category_id=None):
+    def update_project(self, project_name, project_location=None, project_board=None,
+                       category_id=None, vcs_upstream=None):
         update_clause = "UPDATE projects "
         set_clause = "SET " + ", ".join([f"{col} = {val}" for col, val in
-                                         zip(["project_location", "project_board", "category_id"],
-                                             [project_location, project_board, category_id]) if val is not None])
+                                         zip(["project_location", "project_board", "category_id", "vcs_upstream"],
+                                             [project_location, project_board, category_id, vcs_upstream])
+                                         if val is not None])
         where_clause = f"WHERE project_name=\"{project_name}\";"
 
         update_query = "\n".join([update_clause, set_clause, where_clause])
@@ -192,7 +194,7 @@ class DatabaseObject:
             col_ind = df.columns
             col_lst = list(col_ind)
 
-            for unwanted in ['project_location', 'project_board', 'category_id', 'color']:
+            for unwanted in ['project_location', 'project_board', 'category_id', 'color', 'vcs_upstream']:
                 if unwanted in col_lst:
                     col_lst.remove(unwanted)
 
@@ -215,3 +217,4 @@ def get_dbo_str():
 if __name__ == '__main__':
     with DatabaseObject(db_file) as dbo:
         print(dbo)
+

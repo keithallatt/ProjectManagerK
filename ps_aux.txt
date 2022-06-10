@@ -1,0 +1,420 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0 171528 11528 ?        Ss   Jun08   0:07 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    Jun08   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   Jun08   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   Jun08   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/0:0H-events_highpri]
+root           9  0.0  0.0      0     0 ?        I<   Jun08   0:00 [mm_percpu_wq]
+root          10  0.0  0.0      0     0 ?        S    Jun08   0:00 [rcu_tasks_rude_]
+root          11  0.0  0.0      0     0 ?        S    Jun08   0:00 [rcu_tasks_trace]
+root          12  0.0  0.0      0     0 ?        S    Jun08   0:12 [ksoftirqd/0]
+root          13  0.0  0.0      0     0 ?        I    Jun08   1:53 [rcu_sched]
+root          14  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/0]
+root          15  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/0]
+root          16  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/0]
+root          17  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/1]
+root          18  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/1]
+root          19  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/1]
+root          20  0.0  0.0      0     0 ?        S    Jun08   0:15 [ksoftirqd/1]
+root          22  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/1:0H-events_highpri]
+root          23  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/2]
+root          24  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/2]
+root          25  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/2]
+root          26  0.0  0.0      0     0 ?        S    Jun08   0:12 [ksoftirqd/2]
+root          28  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/2:0H-events_highpri]
+root          29  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/3]
+root          30  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/3]
+root          31  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/3]
+root          32  0.0  0.0      0     0 ?        S    Jun08   0:12 [ksoftirqd/3]
+root          34  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/3:0H-events_highpri]
+root          35  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/4]
+root          36  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/4]
+root          37  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/4]
+root          38  0.0  0.0      0     0 ?        S    Jun08   0:11 [ksoftirqd/4]
+root          40  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/4:0H-events_highpri]
+root          41  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/5]
+root          42  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/5]
+root          43  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/5]
+root          44  0.0  0.0      0     0 ?        S    Jun08   0:12 [ksoftirqd/5]
+root          46  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/5:0H-events_highpri]
+root          47  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/6]
+root          48  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/6]
+root          49  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/6]
+root          50  0.0  0.0      0     0 ?        S    Jun08   0:11 [ksoftirqd/6]
+root          52  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/6:0H-events_highpri]
+root          53  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/7]
+root          54  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/7]
+root          55  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/7]
+root          56  0.0  0.0      0     0 ?        S    Jun08   0:10 [ksoftirqd/7]
+root          58  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/7:0H-events_highpri]
+root          59  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/8]
+root          60  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/8]
+root          61  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/8]
+root          62  0.0  0.0      0     0 ?        S    Jun08   0:10 [ksoftirqd/8]
+root          64  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/8:0H-kblockd]
+root          65  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/9]
+root          66  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/9]
+root          67  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/9]
+root          68  0.0  0.0      0     0 ?        S    Jun08   0:11 [ksoftirqd/9]
+root          70  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/9:0H-kblockd]
+root          71  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/10]
+root          72  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/10]
+root          73  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/10]
+root          74  0.0  0.0      0     0 ?        S    Jun08   2:35 [ksoftirqd/10]
+root          76  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/10:0H]
+root          77  0.0  0.0      0     0 ?        S    Jun08   0:00 [cpuhp/11]
+root          78  0.0  0.0      0     0 ?        S    Jun08   0:00 [idle_inject/11]
+root          79  0.0  0.0      0     0 ?        S    Jun08   0:01 [migration/11]
+root          80  0.0  0.0      0     0 ?        S    Jun08   0:12 [ksoftirqd/11]
+root          82  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kworker/11:0H-events_highpri]
+root          83  0.0  0.0      0     0 ?        S    Jun08   0:00 [kdevtmpfs]
+root          84  0.0  0.0      0     0 ?        I<   Jun08   0:00 [netns]
+root          85  0.0  0.0      0     0 ?        I<   Jun08   0:00 [inet_frag_wq]
+root          86  0.0  0.0      0     0 ?        S    Jun08   0:00 [kauditd]
+root          87  0.0  0.0      0     0 ?        S    Jun08   0:00 [khungtaskd]
+root          88  0.0  0.0      0     0 ?        S    Jun08   0:00 [oom_reaper]
+root          89  0.0  0.0      0     0 ?        I<   Jun08   0:00 [writeback]
+root          90  0.0  0.0      0     0 ?        S    Jun08   1:58 [kcompactd0]
+root          91  0.0  0.0      0     0 ?        SN   Jun08   0:00 [ksmd]
+root          92  0.0  0.0      0     0 ?        SN   Jun08   0:00 [khugepaged]
+root         139  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kintegrityd]
+root         140  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kblockd]
+root         141  0.0  0.0      0     0 ?        I<   Jun08   0:00 [blkcg_punt_bio]
+root         142  0.0  0.0      0     0 ?        I<   Jun08   0:00 [tpm_dev_wq]
+root         143  0.0  0.0      0     0 ?        I<   Jun08   0:00 [ata_sff]
+root         144  0.0  0.0      0     0 ?        I<   Jun08   0:00 [md]
+root         145  0.0  0.0      0     0 ?        I<   Jun08   0:00 [edac-poller]
+root         146  0.0  0.0      0     0 ?        I<   Jun08   0:00 [devfreq_wq]
+root         147  0.0  0.0      0     0 ?        S    Jun08   0:00 [watchdogd]
+root         150  0.0  0.0      0     0 ?        I<   Jun08   0:06 [kworker/0:1H-events_highpri]
+root         153  0.0  0.0      0     0 ?        S    Jun08   0:45 [kswapd0]
+root         154  0.0  0.0      0     0 ?        S    Jun08   0:00 [ecryptfs-kthrea]
+root         156  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kthrotld]
+root         157  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/122-aerdrv]
+root         158  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/123-aerdrv]
+root         159  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/124-aerdrv]
+root         160  0.0  0.0      0     0 ?        I<   Jun08   0:00 [acpi_thermal_pm]
+root         163  0.0  0.0      0     0 ?        I<   Jun08   0:00 [vfio-irqfd-clea]
+root         164  0.0  0.0      0     0 ?        I<   Jun08   0:00 [mld]
+root         165  0.0  0.0      0     0 ?        I<   Jun08   0:04 [kworker/2:1H-events_highpri]
+root         166  0.0  0.0      0     0 ?        I<   Jun08   0:00 [ipv6_addrconf]
+root         178  0.0  0.0      0     0 ?        I<   Jun08   0:00 [kstrp]
+root         181  0.0  0.0      0     0 ?        I<   Jun08   0:00 [zswap-shrink]
+root         189  0.0  0.0      0     0 ?        I<   Jun08   0:00 [charger_manager]
+root         212  0.0  0.0      0     0 ?        I<   Jun08   0:02 [kworker/6:1H-events_highpri]
+root         249  0.0  0.0      0     0 ?        I<   Jun08   0:07 [kworker/11:1H-events_highpri]
+root         251  0.0  0.0      0     0 ?        I<   Jun08   0:00 [nvme-wq]
+root         252  0.0  0.0      0     0 ?        I<   Jun08   0:00 [nvme-reset-wq]
+root         253  0.0  0.0      0     0 ?        I<   Jun08   0:00 [nvme-delete-wq]
+root         266  0.0  0.0      0     0 ?        I<   Jun08   0:02 [kworker/5:1H-events_highpri]
+root         268  0.0  0.0      0     0 ?        S    Jun08   0:00 [scsi_eh_0]
+root         269  0.0  0.0      0     0 ?        I<   Jun08   0:00 [scsi_tmf_0]
+root         270  0.0  0.0      0     0 ?        S    Jun08   0:00 [scsi_eh_1]
+root         271  0.0  0.0      0     0 ?        I<   Jun08   0:00 [scsi_tmf_1]
+root         272  0.0  0.0      0     0 ?        S    Jun08   0:00 [scsi_eh_2]
+root         273  0.0  0.0      0     0 ?        I<   Jun08   0:00 [scsi_tmf_2]
+root         274  0.0  0.0      0     0 ?        S    Jun08   0:00 [scsi_eh_3]
+root         275  0.0  0.0      0     0 ?        I<   Jun08   0:00 [scsi_tmf_3]
+root         276  0.0  0.0      0     0 ?        S    Jun08   0:00 [scsi_eh_4]
+root         277  0.0  0.0      0     0 ?        I<   Jun08   0:00 [scsi_tmf_4]
+root         278  0.0  0.0      0     0 ?        S    Jun08   0:00 [scsi_eh_5]
+root         279  0.0  0.0      0     0 ?        I<   Jun08   0:00 [scsi_tmf_5]
+root         288  0.0  0.0      0     0 ?        I<   Jun08   0:01 [kworker/9:1H-events_highpri]
+root         290  0.0  0.0      0     0 ?        I<   Jun08   0:07 [kworker/10:1H-events_highpri]
+root         292  0.0  0.0      0     0 ?        I<   Jun08   0:05 [kworker/1:1H-events_highpri]
+root         297  0.0  0.0      0     0 ?        I<   Jun08   0:02 [kworker/4:1H-events_highpri]
+root         299  0.0  0.0      0     0 ?        I<   Jun08   0:02 [kworker/7:1H-events_highpri]
+root         300  0.0  0.0      0     0 ?        S    Jun08   0:00 [scsi_eh_6]
+root         301  0.0  0.0      0     0 ?        I<   Jun08   0:00 [scsi_tmf_6]
+root         302  0.0  0.0      0     0 ?        S    Jun08   0:06 [usb-storage]
+root         304  0.0  0.0      0     0 ?        I<   Jun08   0:00 [uas]
+root         322  0.0  0.0      0     0 ?        I<   Jun08   0:02 [kworker/8:1H-events_highpri]
+root         324  0.0  0.0      0     0 ?        S    Jun08   0:07 [jbd2/nvme0n1p2-]
+root         325  0.0  0.0      0     0 ?        I<   Jun08   0:00 [ext4-rsv-conver]
+root         366  5.2  1.1 332768 135928 ?       S<s  Jun08 140:12 /lib/systemd/systemd-journald
+root         383  0.0  0.0      0     0 ?        I<   Jun08   0:03 [kworker/3:1H-events_highpri]
+root         388  0.0  0.0  24396  5484 ?        Ss   Jun08   0:00 /lib/systemd/systemd-udevd
+root         389  0.0  0.0      0     0 ?        I<   Jun08   0:00 [ipmi-msghandler]
+root         397  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop0]
+root         441  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop1]
+root         442  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop2]
+root         443  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop3]
+root         492  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop4]
+root         493  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop5]
+root         494  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop6]
+root         495  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop7]
+root         510  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop8]
+root         592  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/137-mei_me]
+root         593  0.0  0.0      0     0 ?        I<   Jun08   0:00 [cfg80211]
+root         602  0.0  0.0      0     0 ?        I<   Jun08   0:00 [cryptd]
+root         617  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/138-iwlwifi]
+root         623  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/139-iwlwifi]
+root         624  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/140-iwlwifi]
+root         625  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/141-iwlwifi]
+root         626  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/142-iwlwifi]
+root         628  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/143-iwlwifi]
+root         629  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/144-iwlwifi]
+root         630  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/145-iwlwifi]
+root         631  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/146-iwlwifi]
+root         632  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/147-iwlwifi]
+root         633  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/148-iwlwifi]
+root         634  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/149-iwlwifi]
+root         635  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/150-iwlwifi]
+root         636  0.0  0.0      0     0 ?        S    Jun08   0:00 [irq/151-iwlwifi]
+root         641  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop9]
+root         642  0.0  0.0      0     0 ?        S    Jun08   0:00 [card0-crtc0]
+root         643  0.0  0.0      0     0 ?        S    Jun08   0:00 [card0-crtc1]
+root         644  0.0  0.0      0     0 ?        S    Jun08   0:00 [card0-crtc2]
+root         691  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop10]
+root         730  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop11]
+root         749  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop12]
+root         942  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop14]
+root         978  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop15]
+root         979  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop16]
+root         995  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop17]
+root        1022  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop18]
+root        1023  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop19]
+root        1028  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop20]
+root        1049  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop21]
+root        1050  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop22]
+root        1051  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop23]
+root        1052  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop24]
+root        1053  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop25]
+root        1079  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop26]
+root        1080  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop27]
+root        1081  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop28]
+root        1082  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop29]
+root        1083  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop30]
+root        1084  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop31]
+root        1085  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop32]
+root        1096  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop33]
+root        1097  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop34]
+root        1098  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop35]
+root        1106  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop36]
+root        1109  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop37]
+root        1111  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop39]
+root        1112  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop40]
+root        1113  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop41]
+root        1114  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop42]
+root        1115  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop43]
+root        1116  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop44]
+root        1117  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop45]
+root        1118  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop46]
+root        1119  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop47]
+root        1120  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop48]
+root        1121  0.0  0.0      0     0 ?        S<   Jun08   0:00 [loop49]
+systemd+    1159  0.0  0.0  24132 10296 ?        Ss   Jun08   0:03 /lib/systemd/systemd-resolved
+systemd+    1160  0.0  0.0  90220  3968 ?        Ssl  Jun08   0:00 /lib/systemd/systemd-timesyncd
+root        1227  0.0  0.0 238308  6788 ?        Ssl  Jun08   1:13 /usr/lib/accountsservice/accounts-daemon
+root        1228  0.0  0.0   2548   696 ?        Ss   Jun08   0:02 /usr/sbin/acpid
+avahi       1231  0.0  0.0   8680  3332 ?        Ss   Jun08   0:03 avahi-daemon: running [aspireTC895.local]
+root        1232  0.0  0.0   8364  3812 ?        Ss   Jun08   0:00 /usr/lib/bluetooth/bluetoothd
+root        1235  0.0  0.0   9420  2936 ?        Ss   Jun08   0:00 /usr/sbin/cron -f
+message+    1237  0.0  0.0   9924  6188 ?        Ss   Jun08   0:06 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root        1238  0.0  0.1 336164 15500 ?        Ssl  Jun08   0:32 /usr/sbin/NetworkManager --no-daemon
+root        1248  0.0  0.0  81972  3212 ?        Ssl  Jun08   0:04 /usr/sbin/irqbalance --foreground
+root        1252  0.0  0.1  39940 15820 ?        Ss   Jun08   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root        1256  0.0  0.0 241500 10948 ?        Ssl  Jun08   0:04 /usr/lib/policykit-1/polkitd --no-debug
+syslog      1261  4.7  0.0 224352  4452 ?        Ssl  Jun08 127:05 /usr/sbin/rsyslogd -n -iNONE
+root        1270  0.0  0.2 1909384 27440 ?       Ssl  Jun08   0:35 /usr/lib/snapd/snapd
+root        1272  0.0  0.0 235716  5884 ?        Ssl  Jun08   0:00 /usr/libexec/switcheroo-control
+root        1274  0.0  0.0  16764  5812 ?        Ss   Jun08   0:00 /lib/systemd/systemd-logind
+root        1275  0.0  0.0 126264  7772 ?        Ssl  Jun08   0:04 /usr/sbin/thermald --systemd --dbus-enable --adaptive
+root        1276  0.0  0.0 393908 10192 ?        Ssl  Jun08   0:00 /usr/lib/udisks2/udisksd
+root        1278  0.0  0.0  13684  2940 ?        Ss   Jun08   0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+avahi       1280  0.0  0.0   8348   324 ?        S    Jun08   0:00 avahi-daemon: chroot helper
+colord      1325  0.0  0.1 247840 12848 ?        Ssl  Jun08   0:01 /usr/libexec/colord
+root        1338  0.0  0.0 314464  7780 ?        Ssl  Jun08   0:00 /usr/sbin/ModemManager
+root        1395  0.0  0.0  12180  3984 ?        Ss   Jun08   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root        1397  0.0  0.0 239644  7616 ?        Ssl  Jun08   0:00 /usr/sbin/gdm3
+root        1684  0.0  0.1 118132 17320 ?        Ssl  Jun08   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+rtkit       1838  0.0  0.0 152936  2612 ?        SNsl Jun08   0:00 /usr/libexec/rtkit-daemon
+root        2055  0.0  0.0 252252  8644 ?        Ssl  Jun08   0:01 /usr/lib/upower/upowerd
+whoopsie    3350  0.0  0.1 326996 12788 ?        Ssl  Jun08   0:00 /usr/bin/whoopsie -f
+kernoops    3353  0.0  0.0  11260   424 ?        Ss   Jun08   0:02 /usr/sbin/kerneloops --test
+kernoops    3355  0.0  0.0  11260   440 ?        Ss   Jun08   0:02 /usr/sbin/kerneloops
+root        4266  0.0  0.0 314668  9020 ?        Sl   Jun08   0:00 gdm-session-worker [pam/gdm-password]
+kallatt     5341  0.0  0.0  19620  7600 ?        Ss   Jun08   0:01 /lib/systemd/systemd --user
+kallatt     5342  0.0  0.0 169572  2476 ?        S    Jun08   0:00 (sd-pam)
+kallatt     5347  1.1  0.1 2729956 22944 ?       S<sl Jun08  30:16 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+kallatt     5349  0.0  0.2 1167568 36040 ?       SNsl Jun08   0:09 /usr/libexec/tracker-miner-fs
+kallatt     5353  0.0  0.0   8756  5080 ?        Ss   Jun08   0:23 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+kallatt     5356  0.0  0.0 240304  5596 ?        Sl   Jun08   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+kallatt     5373  0.0  0.0 239864  6628 ?        Ssl  Jun08   0:00 /usr/libexec/gvfsd
+kallatt     5378  0.0  0.0 378344  4512 ?        Sl   Jun08   0:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+kallatt     5386  0.0  0.0 314408  7728 ?        Ssl  Jun08   0:00 /usr/libexec/gvfs-udisks2-volume-monitor
+kallatt     5395  0.0  0.1 253180 20852 ?        Ssl  Jun08   0:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+root        5396  0.0  0.0      0     0 ?        S<   Jun08   0:00 [krfcommd]
+kallatt     5400  0.0  0.0 317248  8680 ?        Ssl  Jun08   0:01 /usr/libexec/gvfs-afc-volume-monitor
+kallatt     5406  0.0  0.0 235708  4976 ?        Ssl  Jun08   0:00 /usr/libexec/gvfs-mtp-volume-monitor
+kallatt     5410  0.0  0.0 235912  4880 ?        Ssl  Jun08   0:00 /usr/libexec/gvfs-goa-volume-monitor
+kallatt     5414  0.0  0.0 549512 11612 ?        Sl   Jun08   0:00 /usr/libexec/goa-daemon
+kallatt     5421  0.0  0.0 314760  6236 ?        Sl   Jun08   0:00 /usr/libexec/goa-identity-service
+kallatt     5438  0.0  0.0 164052  5652 tty2     Ssl+ Jun08   0:00 /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --systemd --session=ubuntu
+kallatt     5440  6.1  1.2 949876 154704 tty2    Sl+  Jun08 164:44 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3
+kallatt     5457  0.0  0.0 188252  8296 tty2     Sl+  Jun08   0:00 /usr/libexec/gnome-session-binary --systemd --systemd --session=ubuntu
+kallatt     5528  0.0  0.0   6040    40 ?        Ss   Jun08   0:00 /usr/bin/ssh-agent /usr/bin/im-launch env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --systemd --session=ubuntu
+kallatt     5547  0.0  0.0 305740  5640 ?        Ssl  Jun08   0:00 /usr/libexec/at-spi-bus-launcher
+kallatt     5552  0.0  0.0   7508  3620 ?        S    Jun08   0:01 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+kallatt     5560  0.0  0.0  90060  3436 ?        Ssl  Jun08   0:00 /usr/libexec/gnome-session-ctl --monitor
+kallatt     5567  0.0  0.0 484440 10020 ?        Ssl  Jun08   0:00 /usr/libexec/gnome-session-binary --systemd-service --session=ubuntu
+kallatt     5581  3.4  2.4 5717952 291744 ?      Ssl  Jun08  91:06 /usr/bin/gnome-shell
+kallatt     5611  0.0  0.0 387388  9160 ?        Sl   Jun08   0:36 ibus-daemon --panel disable --xim
+kallatt     5615  0.0  0.0 162704  5868 ?        Sl   Jun08   0:00 /usr/libexec/ibus-memconf
+kallatt     5616  0.0  0.2 347636 31944 ?        Sl   Jun08   0:05 /usr/libexec/ibus-extension-gtk3
+kallatt     5618  0.0  0.1 193608 12276 ?        Sl   Jun08   0:23 /usr/libexec/ibus-x11 --kill-daemon
+kallatt     5621  0.0  0.0 236508  6272 ?        Sl   Jun08   0:00 /usr/libexec/ibus-portal
+kallatt     5633  0.0  0.0 162836  5608 ?        Sl   Jun08   0:05 /usr/libexec/at-spi2-registryd --use-gnome-session
+kallatt     5637  0.0  0.0 236092  5688 ?        Ssl  Jun08   0:00 /usr/libexec/xdg-permission-store
+kallatt     5639  0.0  0.0 581420  9308 ?        Sl   Jun08   0:00 /usr/libexec/gnome-shell-calendar-server
+kallatt     5648  0.0  0.1 1070396 12668 ?       Ssl  Jun08   0:00 /usr/libexec/evolution-source-registry
+kallatt     5657  0.0  0.0 156960  5696 ?        Sl   Jun08   0:00 /usr/libexec/dconf-service
+kallatt     5672  0.0  0.1 1314040 13592 ?       Ssl  Jun08   0:00 /usr/libexec/evolution-calendar-factory
+kallatt     5683  0.0  0.1 747132 14140 ?        Ssl  Jun08   0:00 /usr/libexec/evolution-addressbook-factory
+kallatt     5723  0.0  0.1 2930276 16728 ?       Sl   Jun08   0:00 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications
+kallatt     5735  0.0  0.0 315152  7108 ?        Sl   Jun08   0:00 /usr/libexec/gvfsd-trash --spawner :1.3 /org/gtk/gvfs/exec_spaw/0
+root        5741 48.0  0.1  35528 17444 ?        R    Jun08 1284:59 /usr/bin/perl -w /usr/share/debconf/frontend /sbin/update-secureboot-policy --enroll-key
+kallatt     5769  0.0  0.0 309872  5148 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-a11y-settings
+root        5770 14.8  0.0   2616  1876 ?        S    Jun08 396:54 /bin/sh /sbin/update-secureboot-policy --enroll-key
+kallatt     5771  0.0  0.1 510688 14920 ?        Ssl  Jun08   0:06 /usr/libexec/gsd-color
+kallatt     5772  0.0  0.0 373832  9900 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-datetime
+kallatt     5777  0.0  0.0 312456  6532 ?        Ssl  Jun08   0:03 /usr/libexec/gsd-housekeeping
+kallatt     5783  0.0  0.1 341756 12520 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-keyboard
+kallatt     5785  0.0  0.1 831564 16968 ?        Ssl  Jun08   0:02 /usr/libexec/gsd-media-keys
+kallatt     5788  0.0  0.1 415920 13396 ?        Ssl  Jun08   0:01 /usr/libexec/gsd-power
+kallatt     5791  0.0  0.0 248268  8400 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-print-notifications
+kallatt     5794  0.0  0.0 383404  5728 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-rfkill
+kallatt     5796  0.0  0.0 235544  5096 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-screensaver-proxy
+kallatt     5797  0.0  0.0 464860  7732 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-sharing
+kallatt     5798  0.0  0.0 315372  6948 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-smartcard
+kallatt     5800  0.0  0.0 319564  6932 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-sound
+kallatt     5803  0.0  0.0 385172  6324 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-usb-protection
+kallatt     5804  0.0  0.1 341040 12788 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-wacom
+kallatt     5807  0.0  0.0 314224  6076 ?        Ssl  Jun08   0:00 /usr/libexec/gsd-wwan
+kallatt     5809  0.0  0.1 343920 14188 ?        Ssl  Jun08   0:01 /usr/libexec/gsd-xsettings
+kallatt     5827  0.0  0.0 231800  5608 ?        Sl   Jun08   0:00 /usr/libexec/gsd-disk-utility-notify
+kallatt     5841  0.0  0.1 640292 16660 ?        Sl   Jun08   0:00 /usr/libexec/evolution-data-server/evolution-alarm-notify
+kallatt     5918  0.0  0.0 342220  9700 ?        Sl   Jun08   0:00 /usr/libexec/gsd-printer
+kallatt     5973  0.0  0.0 162828  6160 ?        Sl   Jun08   0:12 /usr/libexec/ibus-engine-simple
+kallatt    69523  0.0  0.1 436220 13980 ?        Sl   Jun08   0:00 /usr/libexec/gvfsd-http --spawner :1.3 /org/gtk/gvfs/exec_spaw/1
+kallatt    69604  0.0  0.0 531168  5104 ?        Ssl  Jun08   0:00 /usr/libexec/xdg-document-portal
+kallatt    77152  0.0  0.0 1382360 6228 ?        Sl   Jun08   0:03 /usr/bin/snap userd
+kallatt   125569  0.0  0.0 163268  6356 ?        Ssl  Jun08   0:00 /usr/libexec/gvfsd-metadata
+kallatt   129922  0.0  0.8 1394928 106136 ?      Sl   Jun08   0:17 /usr/bin/gnome-software --gapplication-service
+kallatt   129927  0.0  0.1 419184 17856 ?        Sl   Jun08   0:02 update-notifier
+usbmux    139446  0.0  0.0 160280  6924 ?        Ssl  14:11   0:00 /usr/sbin/usbmuxd --user usbmux --systemd
+kallatt   139570  0.0  0.2 540612 25432 ?        Sl   14:11   0:00 /usr/libexec/gvfsd-afc --spawner :1.3 /org/gtk/gvfs/exec_spaw/9
+kallatt   173654  0.0  0.1 433412 12500 ?        Sl   14:11   0:00 /usr/libexec/gvfsd-gphoto2 --spawner :1.3 /org/gtk/gvfs/exec_spaw/10
+kallatt   198587  0.2  0.4 34344280 52080 ?      Sl   Jun09   2:48 /snap/brave/163/opt/brave.com/brave/brave --type=utility --utility-sub-type=audio.mojom.AudioService --lang=en-GB --service-sandbox-type=none --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072 --enable-crashpad
+root      217563  0.0  0.0      0     0 ?        I    11:42   0:02 [kworker/u24:1-ext4-rsv-conversion]
+root      299330  0.1  0.0      0     0 ?        I    00:58   1:13 [kworker/10:1-events]
+kallatt   343147  0.0  0.0   2616  1676 ?        S    Jun09   0:00 /bin/sh /snap/pycharm-community/281/bin/pycharm.sh
+kallatt   344418  8.2 22.6 11097344 2743400 ?    Sl   Jun09  81:02 /snap/pycharm-community/281/jbr/bin/java -classpath /snap/pycharm-community/281/lib/util.jar:/snap/pycharm-community/281/lib/app.jar:/snap/pycharm-community/281/lib/3rd-party-rt.jar:/snap/pycharm-community/281/lib/jna.jar:/snap/pycharm-community/281/lib/platform-statistics-devkit.jar:/snap/pycharm-community/281/lib/jps-model.jar:/snap/pycharm-community/281/lib/rd-core.jar:/snap/pycharm-community/281/lib/rd-framework.jar:/snap/pycharm-community/281/lib/stats.jar:/snap/pycharm-community/281/lib/protobuf.jar:/snap/pycharm-community/281/lib/external-system-rt.jar:/snap/pycharm-community/281/lib/forms_rt.jar:/snap/pycharm-community/281/lib/intellij-test-discovery.jar:/snap/pycharm-community/281/lib/rd-swing.jar:/snap/pycharm-community/281/lib/groovy.jar:/snap/pycharm-community/281/lib/annotations-java5.jar:/snap/pycharm-community/281/lib/byte-buddy-agent.jar:/snap/pycharm-community/281/lib/error-prone-annotations.jar:/snap/pycharm-community/281/lib/externalProcess-rt.jar:/snap/pycharm-community/281/lib/grpc-netty-shaded.jar:/snap/pycharm-community/281/lib/intellij-coverage-agent-1.0.656.jar:/snap/pycharm-community/281/lib/jetbrains-annotations.jar:/snap/pycharm-community/281/lib/jsch-agent.jar:/snap/pycharm-community/281/lib/junit4.jar:/snap/pycharm-community/281/lib/junixsocket-core.jar:/snap/pycharm-community/281/lib/lz4-java.jar:/snap/pycharm-community/281/lib/platform-objectSerializer-annotations.jar:/snap/pycharm-community/281/lib/pty4j.jar:/snap/pycharm-community/281/lib/rd-text.jar:/snap/pycharm-community/281/lib/util_rt.jar:/snap/pycharm-community/281/lib/winp.jar:/snap/pycharm-community/281/lib/dbus-java-3.2.1.jar:/snap/pycharm-community/281/lib/java-utils-1.0.6.jar:/snap/pycharm-community/281/lib/jnr-unixsocket-0.23.jar:/snap/pycharm-community/281/lib/jnr-ffi-2.1.10.jar:/snap/pycharm-community/281/lib/jffi-1.2.19.jar:/snap/pycharm-community/281/lib/jffi-1.2.19-native.jar:/snap/pycharm-community/281/lib/asm-7.1.jar:/snap/pycharm-community/281/lib/asm-commons-7.1.jar:/snap/pycharm-community/281/lib/asm-analysis-7.1.jar:/snap/pycharm-community/281/lib/asm-tree-7.1.jar:/snap/pycharm-community/281/lib/asm-util-7.1.jar:/snap/pycharm-community/281/lib/jnr-a64asm-1.0.0.jar:/snap/pycharm-community/281/lib/jnr-x86asm-1.0.2.jar:/snap/pycharm-community/281/lib/jnr-constants-0.9.12.jar:/snap/pycharm-community/281/lib/jnr-enxio-0.21.jar:/snap/pycharm-community/281/lib/jnr-posix-3.0.50.jar -Xms128m -Xmx750m -XX:ReservedCodeCacheSize=512m -XX:+IgnoreUnrecognizedVMOptions -XX:+UseG1GC -XX:SoftRefLRUPolicyMSPerMB=50 -XX:CICompilerCount=2 -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow -ea -Dsun.io.useCanonCaches=false -Djdk.http.auth.tunneling.disabledSchemes="" -Djdk.attach.allowAttachSelf=true -Djdk.module.illegalAccess.silent=true -Dkotlinx.coroutines.debug=off -Dsun.tools.attach.tmp.only=true -Xmx1482m -XX:ErrorFile=/home/kallatt/java_error_in_pycharm_%p.log -XX:HeapDumpPath=/home/kallatt/java_error_in_pycharm_.hprof -Djb.vmOptionsFile=/home/kallatt/.config/JetBrains/PyCharmCE2022.1/pycharm64.vmoptions -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader -Didea.strict.classpath=true -Didea.vendor.name=JetBrains -Didea.paths.selector=PyCharmCE2022.1 -Didea.platform.prefix=PyCharmCore -Dsplash=true com.intellij.idea.Main
+kallatt   349650  0.0  0.0   4300  2828 ?        S    Jun09   0:02 /snap/pycharm-community/281/bin/fsnotifier
+root      378274  0.0  0.0      0     0 ?        I    00:59   0:20 [kworker/4:0-events]
+root      396987  0.0  0.0      0     0 ?        I<   Jun08   0:00 [xfsalloc]
+root      396988  0.0  0.0      0     0 ?        I<   Jun08   0:00 [xfs_mru_cache]
+root      397001  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsIO]
+root      397002  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397003  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397004  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397005  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397006  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397007  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397008  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397009  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397010  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397011  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397012  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397013  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsCommit]
+root      397014  0.0  0.0      0     0 ?        S    Jun08   0:00 [jfsSync]
+root      403371  0.0  0.0      0     0 ?        I    00:59   0:24 [kworker/1:0-events]
+root      468927  0.8  0.0 306936  2924 ?        Ssl  Jun08  23:17 /usr/local/bin/ckb-next-daemon
+kallatt   538284  1.0  0.2 1345064 35456 ?       Sl   Jun08  28:19 /usr/local/bin/ckb-next
+kallatt   538844  0.1  0.0   3856   880 ?        S    Jun08   4:52 /usr/local/libexec/ckb-next-animations/random --ckb-run
+kallatt   538848  0.1  0.0   3860   956 ?        S    Jun08   5:01 /usr/local/libexec/ckb-next-animations/ripple --ckb-run
+root      553688  0.0  0.0      0     0 ?        I    08:33   0:11 [kworker/5:0-events]
+root      590396  0.0  0.0      0     0 ?        I    01:01   0:21 [kworker/6:1-events]
+kallatt   740504  0.0  0.2 441112 24524 ?        Ssl  Jun08   0:09 /usr/libexec/tracker-store
+kallatt   742896  0.2  1.1 42654972 144224 ?     Sl   15:28   0:02 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --disable-gpu-compositing --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=359 --launch-time-ticks=159233090400 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+root      910320  0.0  0.0   6540  4732 ?        Ss   Jun08   0:03 /usr/sbin/apache2 -k start
+root      949153  0.0  0.0   2496   572 ?        S    Jun08   0:00 bpfilter_umh
+root     1088016  0.0  0.0      0     0 ?        I<   00:12   0:39 [kworker/u25:2-i915_flip]
+root     1112513  0.0  0.0      0     0 ?        I    14:20   0:00 [kworker/11:1-events]
+root     1168328  0.0  0.0      0     0 ?        I    13:08   0:03 [kworker/u24:4-ext4-rsv-conversion]
+kallatt  1236101 61.4  3.9 42785064 473736 ?     Sl   15:32  10:12 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --disable-gpu-compositing --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=362 --launch-time-ticks=159488120732 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+root     1256201  0.0  0.0      0     0 ?        I    15:33   0:00 [kworker/1:2-mm_percpu_wq]
+root     1260892  0.0  0.0      0     0 ?        I    15:33   0:00 [kworker/2:2]
+kallatt  1266850  0.0  0.4 21788200 51464 ?      Sl   Jun09   0:18 /snap/trello-desktop/12/trello-desktop --no-sandbox --enable-crashpad
+root     1270548  0.0  0.0      0     0 ?        I    14:21   0:00 [kworker/10:0-events]
+kallatt  1270931  0.0  0.0 17173108 7024 ?       S    Jun09   0:00 /snap/trello-desktop/12/trello-desktop --type=zygote --no-zygote-sandbox --no-sandbox --enable-crashpad --enable-crashpad
+kallatt  1270947  0.0  0.0 17173104 7632 ?       S    Jun09   0:00 /snap/trello-desktop/12/trello-desktop --type=zygote --no-sandbox --enable-crashpad --enable-crashpad
+kallatt  1277492  0.0  0.1 17367164 21692 ?      Sl   Jun09   0:04 /snap/trello-desktop/12/trello-desktop --type=gpu-process --no-sandbox --enable-crashpad --enable-crash-reporter=2f884d0a-25f7-4d02-971a-16aa14bad3cc,no_channel --user-data-dir=/home/kallatt/snap/trello-desktop/12/.config/Trello Desktop --gpu-preferences=WAAAAAAAAAAgAAAIAAAAAAAAAAAAAAAAAABgAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --shared-files --field-trial-handle=0,i,4400069004878034619,13862332419306964788,131072 --disable-features=SpareRendererForSitePerProcess
+root     1279749  0.0  0.0      0     0 ?        I    15:33   0:00 [kworker/6:2-events]
+kallatt  1280485  0.0  0.1 17243300 18140 ?      Sl   Jun09   0:06 /snap/trello-desktop/12/trello-desktop --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-sandbox-type=none --no-sandbox --enable-crashpad --enable-crash-reporter=2f884d0a-25f7-4d02-971a-16aa14bad3cc,no_channel --user-data-dir=/home/kallatt/snap/trello-desktop/12/.config/Trello Desktop --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,4400069004878034619,13862332419306964788,131072 --disable-features=SpareRendererForSitePerProcess --enable-crashpad
+kallatt  1281821  0.0  0.7 30065684 91064 ?      Sl   Jun09   0:22 /snap/trello-desktop/12/trello-desktop --type=renderer --enable-crashpad --enable-crash-reporter=2f884d0a-25f7-4d02-971a-16aa14bad3cc,no_channel --user-data-dir=/home/kallatt/snap/trello-desktop/12/.config/Trello Desktop --app-path=/snap/trello-desktop/12/resources/app --no-sandbox --no-zygote --no-sandbox --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=4 --launch-time-ticks=88630486710 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,4400069004878034619,13862332419306964788,131072 --disable-features=SpareRendererForSitePerProcess --enable-crashpad
+kallatt  1282308  0.0  0.2 25825480 31204 ?      Sl   Jun09   0:02 /snap/trello-desktop/12/trello-desktop --type=renderer --enable-crashpad --enable-crash-reporter=2f884d0a-25f7-4d02-971a-16aa14bad3cc,no_channel --user-data-dir=/home/kallatt/snap/trello-desktop/12/.config/Trello Desktop --app-path=/snap/trello-desktop/12/resources/app --no-sandbox --no-zygote --no-sandbox --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=88630760437 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,4400069004878034619,13862332419306964788,131072 --disable-features=SpareRendererForSitePerProcess --enable-crashpad
+kallatt  1295036  0.0  0.2 25816364 27004 ?      Sl   Jun09   0:01 /snap/trello-desktop/12/trello-desktop --type=renderer --enable-crashpad --enable-crash-reporter=2f884d0a-25f7-4d02-971a-16aa14bad3cc,no_channel --user-data-dir=/home/kallatt/snap/trello-desktop/12/.config/Trello Desktop --app-path=/snap/trello-desktop/12/resources/app --enable-sandbox --no-sandbox --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=88637624182 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,4400069004878034619,13862332419306964788,131072 --disable-features=SpareRendererForSitePerProcess
+root     1370110  0.0  0.0      0     0 ?        I    15:34   0:00 [kworker/3:1-events]
+kallatt  1650113  0.5  1.3 4226500 159220 ?      Sl   Jun08  14:33 /snap/spotify/60/usr/share/spotify/spotify
+kallatt  1651815  0.0  0.1 647428 19464 ?        S    Jun08   0:00 /snap/spotify/60/usr/share/spotify/spotify --type=zygote --no-zygote-sandbox --no-sandbox --log-severity=disable --user-agent-product=Chrome/99.0.4844.84 Spotify/1.1.84.716 --lang=en --user-data-dir=/home/kallatt/snap/spotify/60/.config/spotify/User Data --log-file=/snap/spotify/60/usr/share/spotify/debug.log
+kallatt  1651821  0.0  0.1 647428 21288 ?        S    Jun08   0:00 /snap/spotify/60/usr/share/spotify/spotify --type=zygote --no-sandbox --log-severity=disable --user-agent-product=Chrome/99.0.4844.84 Spotify/1.1.84.716 --lang=en --user-data-dir=/home/kallatt/snap/spotify/60/.config/spotify/User Data --log-file=/snap/spotify/60/usr/share/spotify/debug.log
+kallatt  1652501  0.0  0.2 1558164 30304 ?       Sl   Jun08   1:50 /snap/spotify/60/usr/share/spotify/spotify --type=gpu-process --no-sandbox --log-severity=disable --user-agent-product=Chrome/99.0.4844.84 Spotify/1.1.84.716 --lang=en --user-data-dir=/home/kallatt/snap/spotify/60/.config/spotify/User Data --gpu-preferences=UAAAAAAAAAAgAAAIAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAABgAAAAAAAAAGAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --log-file=/snap/spotify/60/usr/share/spotify/debug.log --shared-files --field-trial-handle=0,i,12512646734447724148,8041953337968790766,131072
+kallatt  1653975  0.0  0.1 948752 13044 ?        Sl   Jun08   0:00 /snap/spotify/60/usr/share/spotify/spotify --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=utility --no-sandbox --log-severity=disable --user-agent-product=Chrome/99.0.4844.84 Spotify/1.1.84.716 --lang=en --user-data-dir=/home/kallatt/snap/spotify/60/.config/spotify/User Data --log-file=/snap/spotify/60/usr/share/spotify/debug.log --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,12512646734447724148,8041953337968790766,131072
+kallatt  1654044  0.0  0.3 2197780 46328 ?       Sl   Jun08   1:14 /snap/spotify/60/usr/share/spotify/spotify --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --log-severity=disable --user-agent-product=Chrome/99.0.4844.84 Spotify/1.1.84.716 --lang=en --user-data-dir=/home/kallatt/snap/spotify/60/.config/spotify/User Data --log-file=/snap/spotify/60/usr/share/spotify/debug.log --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,12512646734447724148,8041953337968790766,131072
+kallatt  1654625  0.5  2.1 32382060 265908 ?     Sl   Jun08  13:20 /snap/spotify/60/usr/share/spotify/spotify --type=renderer --log-severity=disable --user-agent-product=Chrome/99.0.4844.84 Spotify/1.1.84.716 --disable-spell-checking --user-data-dir=/home/kallatt/snap/spotify/60/.config/spotify/User Data --no-sandbox --log-file=/snap/spotify/60/usr/share/spotify/debug.log --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=813755377 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,12512646734447724148,8041953337968790766,131072
+root     1740521  0.0  0.0      0     0 ?        S<   Jun09   0:00 [loop50]
+root     1828106  0.0  0.0      0     0 ?        I    12:33   0:04 [kworker/9:2-events]
+root     1952500  0.0  0.0      0     0 ?        I<   15:39   0:00 [kworker/u25:1]
+kallatt  1956746  0.0  0.5 42640496 61948 ?      Sl   15:39   0:00 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --disable-gpu-compositing --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=371 --launch-time-ticks=159865927161 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+root     2006346  0.0  0.0      0     0 ?        I    00:22   0:23 [kworker/11:0-events]
+root     2212104  0.0  0.0      0     0 ?        I    00:26   0:21 [kworker/7:2-rcu_gp]
+root     2230873  0.0  0.0      0     0 ?        I    15:42   0:00 [kworker/8:1-cgroup_destroy]
+root     2280677  0.0  0.0      0     0 ?        I    14:30   0:02 [kworker/8:0-events]
+root     2280858  0.0  0.0      0     0 ?        I    08:47   0:11 [kworker/2:1-events]
+root     2293614  0.0  0.0      0     0 ?        I    15:05   0:00 [kworker/5:1-events]
+root     2344060  0.0  0.0      0     0 ?        I    15:06   0:01 [kworker/4:2-mm_percpu_wq]
+kallatt  2570461  0.0  0.1 1210164 19476 ?       Sl   Jun08   0:01 /snap/spotify/60/usr/share/spotify/spotify --type=utility --utility-sub-type=audio.mojom.AudioService --lang=en-US --service-sandbox-type=none --no-sandbox --log-severity=disable --user-agent-product=Chrome/99.0.4844.84 Spotify/1.1.84.716 --lang=en --user-data-dir=/home/kallatt/snap/spotify/60/.config/spotify/User Data --log-file=/snap/spotify/60/usr/share/spotify/debug.log --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,12512646734447724148,8041953337968790766,131072
+root     2652904  0.0  0.0      0     0 ?        I    00:34   0:22 [kworker/3:0-events]
+root     2706686  0.0  0.0      0     0 ?        I    14:34   0:00 [kworker/9:1-events]
+root     2707861  0.0  0.0      0     0 ?        I    14:34   0:00 [kworker/7:0-events]
+kallatt  2870554 39.0  1.3 1055608 161944 ?      Sl   15:49   0:05 /usr/bin/python3.8 /home/kallatt/PycharmProjects/ProjectManagerK/gui_file.py
+kallatt  2887749  0.0  0.0   2616   596 ?        S    15:49   0:00 sh -c ps -aux > ps_aux.txt
+kallatt  2887753  0.0  0.0  11684  3504 ?        R    15:49   0:00 ps -aux
+kallatt  3016796  0.1  0.4 772432 48684 ?        Sl   Jun09   1:18 /usr/bin/python3.8 /snap/pycharm-community/281/plugins/python-ce/helpers/pydev/pydevconsole.py --mode=client --port=45513
+kallatt  3073006  0.0  0.0  11544  5620 pts/1    Ss+  Jun09   0:00 /bin/bash --rcfile /snap/pycharm-community/281/plugins/terminal/jediterm-bash.in -i
+kallatt  3075140 12.1  3.8 42697096 469260 ?     Sl   10:37  37:57 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --disable-gpu-compositing --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=228 --launch-time-ticks=141780000130 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+root     3084912  0.0  0.0      0     0 ?        I<   Jun09   0:52 [kworker/u25:0-i915_flip]
+kallatt  3089936  0.0  0.2 410772 32956 ?        Sl   Jun09   0:02 /usr/bin/kwalletd5
+root     3092188  0.0  0.0      0     0 ?        I    13:59   0:00 [kworker/0:0-events]
+root     3387639  0.0  0.0      0     0 ?        I    15:15   0:00 [kworker/u24:0-events_unbound]
+root     3481443  0.0  0.0      0     0 ?        I    00:46   0:23 [kworker/0:1-events]
+kallatt  3564513 10.8  3.1 46960108 378256 ?     Sl   14:41   7:22 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --disable-gpu-compositing --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=319 --launch-time-ticks=156394564625 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3579958  0.0  0.0 536632  8660 ?        Ssl  Jun08   0:01 /usr/libexec/xdg-desktop-portal
+kallatt  3579982  0.0  0.1 879096 18800 ?        Ssl  Jun08   0:02 /usr/libexec/xdg-desktop-portal-gtk
+root     3733770  0.0  0.0      0     0 ?        S<   Jun09   0:00 [loop38]
+kallatt  3771769  0.0  0.0  13268  1584 ?        S    Jun09   0:00 /bin/bash /snap/brave/163/opt/brave.com/brave/brave-browser
+kallatt  3772820  0.0  0.0  10096  1320 ?        S    Jun09   0:00 cat
+kallatt  3772821  0.0  0.0  10096  1328 ?        S    Jun09   0:00 cat
+kallatt  3772824  0.8  2.8 34378540 340136 ?     Sl   Jun09   9:16 /snap/brave/163/opt/brave.com/brave/brave --enable-crashpad
+kallatt  3773075  0.0  0.0 33589644 2184 ?       Sl   Jun09   0:00 /snap/brave/163/opt/brave.com/brave/chrome_crashpad_handler --monitor-self --monitor-self-annotation=ptype=crashpad-handler --database=/home/kallatt/snap/brave/163/.config/BraveSoftware/Brave-Browser/Crash Reports --metrics-dir=/home/kallatt/snap/brave/163/.config/BraveSoftware/Brave-Browser --url=https://cr.brave.com --annotation=lsb-release=Ubuntu Core 18 --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=102.1.39.120 --initial-client-fd=6 --shared-client-connection
+kallatt  3773087  0.0  0.0 33580408 912 ?        Sl   Jun09   0:00 /snap/brave/163/opt/brave.com/brave/chrome_crashpad_handler --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler --database=/home/kallatt/snap/brave/163/.config/BraveSoftware/Brave-Browser/Crash Reports --url=https://cr.brave.com --annotation=lsb-release=Ubuntu Core 18 --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=102.1.39.120 --initial-client-fd=4 --shared-client-connection
+kallatt  3773123  0.0  0.2 33994348 25564 ?      S    Jun09   0:00 /snap/brave/163/opt/brave.com/brave/brave --type=zygote --no-zygote-sandbox --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --enable-crashpad
+kallatt  3773144  0.0  0.2 33994336 27384 ?      S    Jun09   0:00 /snap/brave/163/opt/brave.com/brave/brave --type=zygote --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --enable-crashpad
+kallatt  3773216  0.0  0.0 33994360 10364 ?      S    Jun09   0:00 /snap/brave/163/opt/brave.com/brave/brave --type=zygote --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --enable-crashpad
+kallatt  3774866  0.3  0.6 34071224 81508 ?      Sl   Jun09   4:11 /snap/brave/163/opt/brave.com/brave/brave --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-sandbox-type=none --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072 --enable-crashpad
+kallatt  3775348  0.0  0.3 34043936 42244 ?      Sl   Jun09   0:15 /snap/brave/163/opt/brave.com/brave/brave --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-GB --service-sandbox-type=utility --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3776131  0.0  1.5 53172232 185740 ?     Sl   Jun09   0:12 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --extension-process --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=94272959156 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3777141  4.0  1.1 42650936 138508 ?     Sl   Jun09  44:18 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=11 --launch-time-ticks=94273472319 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3777278  0.0  0.7 42648696 93068 ?      Sl   Jun09   0:01 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --extension-process --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=94273531452 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3777447  0.0  0.9 42662084 116804 ?     Sl   Jun09   0:13 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --extension-process --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=94273635078 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3778732 13.3  2.3 34638232 280640 ?     Sl   Jun09 146:51 /snap/brave/163/opt/brave.com/brave/brave --type=gpu-process --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --gpu-preferences=WAAAAAAAAAAgAAAIAAAAAAAAAAAAAAAAAABgAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --use-gl=angle --use-angle=swiftshader-webgl --shared-files --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3782741  0.0  0.4 34035740 52496 ?      Sl   Jun09   0:05 /snap/brave/163/opt/brave.com/brave/brave --type=utility --utility-sub-type=bat_ads.mojom.BatAdsService --lang=en-GB --service-sandbox-type=utility --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  3788311  0.1  0.9 42649844 116936 ?     Sl   Jun09   1:36 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --disable-gpu-compositing --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=18 --launch-time-ticks=94279386676 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+www-data 3911952  0.0  0.0 1997852 4208 ?        Sl   00:00   0:00 /usr/sbin/apache2 -k start
+www-data 3911953  0.0  0.0 1997852 4208 ?        Sl   00:00   0:00 /usr/sbin/apache2 -k start
+root     3912088  0.0  0.0  28728  8968 ?        Ss   00:00   0:00 /usr/sbin/cupsd -l
+root     3912091  0.0  0.0 178588 11200 ?        Ssl  00:00   0:00 /usr/sbin/cups-browsed
+kallatt  3988057 21.8  2.7 42712036 331104 ?     Sl   10:48  65:49 /snap/brave/163/opt/brave.com/brave/brave --type=renderer --enable-crashpad --crashpad-handler-pid=3773075 --enable-crash-reporter=61d90de2-237f-482a-bfac-c5634f9a4e3d, --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --brave_session_token=15186065558848388695 --disable-gpu-compositing --lang=en-GB --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=231 --launch-time-ticks=142396137079 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,8588694264635142049,11265684295296275651,131072
+kallatt  4144515  0.0  0.0 388044  8252 ?        Sl   Jun09   0:00 /usr/libexec/gvfsd-network --spawner :1.3 /org/gtk/gvfs/exec_spaw/4
+kallatt  4144699  0.0  0.0 315020  8036 ?        Sl   Jun09   0:00 /usr/libexec/gvfsd-dnssd --spawner :1.3 /org/gtk/gvfs/exec_spaw/6

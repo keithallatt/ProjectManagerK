@@ -14,17 +14,48 @@ import imgui
 from imgui.integrations.glfw import GlfwRenderer
 import gitlog
 from screeninfo import get_monitors
+from datetime import datetime
+import psutil
+from barcode_reader import get_barcode
 
 monitor = get_monitors()[0]
-width = monitor.width - 400
-height = monitor.height - 400
+width = monitor.width
+height = monitor.height - 50
 
 path_to_font = "/home/kallatt/Documents/Fonts/PragmataPro_Mono_R_liga_0826.ttf"
 
+with open("hackertyper.txt", "r") as hacker_typer:
+    source = hacker_typer.read()
+if not os.path.exists("hackertyper.txt"):
+    source = "."
+
+
+def gln(n):
+    return f"{str(n).rjust(5)}\t"
+
+
+def get_ram_usage():
+    """
+    Obtains the absolute number of RAM bytes currently in use by the system.
+    :returns: System RAM usage in bytes.
+    :rtype: int
+    """
+    return int(psutil.virtual_memory().total - psutil.virtual_memory().available)
+
+
+contents = gln(1)
+source_index = 0
+source_speed = 16
+line_number = 1
 opened_state = True
+metric_lines = [
+    [] for _ in range(30)
+]
+metric_message, metric_index = " "*100 + get_barcode(), 0
 
 
 def frame_commands():
+    global contents, source, source_index, source_speed, line_number, metric_index, metric_message
     gl.glClearColor(0.1, 0.1, 0.1, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
@@ -55,9 +86,103 @@ def frame_commands():
             name = project_row['project_name']
             loc = project_row['project_location']
             cat_id = project_row['category_id']
-            if imgui.button(cats[cat_id] + ": " + name):
-                subprocess.Popen(['xdg-open', loc])
-            imgui.text("\t~/"+os.path.relpath(loc, os.path.expanduser('~')))
+            vcs_upstream = project_row['vcs_upstream']
+            if vcs_upstream is None:
+                vcs_upstream = "Local"
+            vcs_upstream = f"Git Upstream: {vcs_upstream}"
+            button_text = [
+                cats[cat_id] + ": " + name,
+                "\t~/"+os.path.relpath(loc, os.path.expanduser('~')),
+                "\t" + vcs_upstream
+            ]
+            if imgui.button("\n".join(button_text)):
+                cwd = os.getcwd()
+                os.chdir(loc)
+                os.system(f"gnome-terminal")
+                os.chdir(cwd)
+    imgui.end()
+
+    for _ in range(source_speed):
+        char_to_be_added = source[source_index]
+        # if char_to_be_added == "\t":
+        #     char_to_be_added = "|   "
+
+        contents += char_to_be_added
+
+        if char_to_be_added == "\n":
+            line_number += 1
+            contents += gln(line_number)
+
+        line_cutoff = 79
+        if contents.count("\n") >= line_cutoff:
+            contents = "\n".join(contents.split("\n")[-line_cutoff:])
+        source_index += 1
+        source_index %= len(source)
+
+    imgui.set_next_window_size(1100, height-100)
+    imgui.set_next_window_position(600, 50)
+    imgui.begin("", flags=no_title_no_resize)
+    # col=
+    draw_list = imgui.get_window_draw_list()
+    draw_list.add_text(620, 75, imgui.get_color_u32_rgba(0.12549019607843137,
+                                                         0.7607843137254902,
+                                                         0.054901960784313725, 1), contents)
+    imgui.end()
+
+    imgui.set_next_window_size(400, 50)
+    imgui.set_next_window_position(width - 450, 50)
+    imgui.begin("clock", flags=no_title_no_resize)
+
+    now = datetime.now()
+    fmt = now.strftime("%c")  #"%A %B  - %H:%M:%S")
+    imgui.text(f" -- {fmt} --")
+    imgui.end()
+
+    imgui.set_next_window_size(1300, 1000)
+    imgui.set_next_window_position(1750, 50)
+    imgui.begin("ps aux", flags=no_title_no_resize)
+
+    mem_bytes = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')  # e.g. 4015976448
+    mem_gib = mem_bytes / (1024. ** 3)  # e.g. 3.74
+    ram_usage = get_ram_usage() / (1024. ** 3)
+
+    imgui.text(f"{ram_usage:.1f} / {mem_gib:.1f} GiB RAM Used.")
+
+    cfo = psutil.cpu_freq()
+    cpu_freq = cfo.current / 1000
+    cpu_count = psutil.cpu_count()
+
+    cpu_freq_text = f"ClkSpd {cpu_freq:.2f}GHz"
+    cpu_count_text = f"CPUCores: {cpu_count}"
+
+    num_lines = len(metric_lines)
+
+    ram_index = int(num_lines * ram_usage / mem_gib)
+    cpu_index = int(num_lines * (cpu_freq * 1000 - cfo.min) / (cfo.max - cfo.min))
+
+    imgui.text(f"{cpu_freq_text}, {cpu_count_text}")
+    line_len = len("".join(metric_lines[0])) if metric_lines[0] else 0
+    line_len = min(100, line_len + 1)
+
+    imgui.text("-"*line_len + "\\")
+
+    for i in range(num_lines-1, -1, -1):
+        if i == num_lines - 1:
+            metric_lines[i].append(metric_message[metric_index])
+            metric_index = (metric_index + 1) % len(metric_message)
+        elif i == ram_index == cpu_index:
+            metric_lines[i].append("X")
+        elif i == ram_index:
+            metric_lines[i].append(">")
+        elif i == cpu_index:
+            metric_lines[i].append("<")
+        else:
+            metric_lines[i].append(" ")
+        if len(metric_lines[i]) > 100:
+            metric_lines[i] = metric_lines[i][-100:]
+
+        imgui.text("".join(metric_lines[i]) + "|")
+    imgui.text("-"*line_len + "/")
     imgui.end()
 
 
