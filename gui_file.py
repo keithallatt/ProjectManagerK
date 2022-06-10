@@ -89,13 +89,14 @@ source_speed = 16
 line_number = 1
 opened_state = True
 metric_lines = [
-    [] for _ in range(30)
+    [] for _ in range(16)
 ]
 metric_message, metric_index = " "*100 + get_barcode(), 0
+git_activity = gitlog.plot_git_activity()
 
 
 def frame_commands():
-    global contents, source, source_index, source_speed, line_number, metric_index, metric_message
+    global contents, source, source_index, source_speed, line_number, metric_index, metric_message, git_activity
     gl.glClearColor(0.1, 0.1, 0.1, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
@@ -104,13 +105,18 @@ def frame_commands():
     if io.key_ctrl and io.keys_down[glfw.KEY_Q]:
         sys.exit(0)
 
-    result = gitlog.plot_git_activity()
-
     no_title_no_resize = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
 
+    column_widths = [500, 1100, 600, 935, 400]
+    x_positions = [50]
+    for x in column_widths[:-1]:
+        x_positions.append(x_positions[-1] + x + 50)
+    x_positions[-1] = width - 50 - column_widths[-1]
+
+    column_index = 0
     # column 1
-    imgui.set_next_window_size(500, height-100)
-    imgui.set_next_window_position(50, 50)
+    imgui.set_next_window_size(column_widths[column_index], height-100)
+    imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("Project List", flags=no_title_no_resize | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR)
     imgui.text("Open Project...\n---------------")
     with DatabaseObject(db_file) as dbo:
@@ -142,6 +148,7 @@ def frame_commands():
     imgui.end()
 
     # column 2
+    column_index += 1
     for _ in range(source_speed):
         char_to_be_added = source[source_index]
         # if char_to_be_added == "\t":
@@ -159,20 +166,20 @@ def frame_commands():
         source_index += 1
         source_index %= len(source)
 
-    imgui.set_next_window_size(1100, height-100)
-    imgui.set_next_window_position(600, 50)
+    imgui.set_next_window_size(column_widths[column_index], height-100)
+    imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("", flags=no_title_no_resize)
     # col=
     draw_list = imgui.get_window_draw_list()
-    draw_list.add_text(620, 75, imgui.get_color_u32_rgba(0.12549019607843137,
-                                                         0.7607843137254902,
-                                                         0.054901960784313725, 1), contents)
+    draw_list.add_text(x_positions[column_index] + 20, 75, imgui.get_color_u32_rgba(0.12549019607843137,
+                                                                         0.7607843137254902,
+                                                                         0.054901960784313725, 1), contents)
     imgui.end()
 
     # column 3
-
-    imgui.set_next_window_size(width - 2250, 1000)
-    imgui.set_next_window_position(1750, 50)
+    column_index += 1
+    imgui.set_next_window_size(column_widths[column_index], 700)
+    imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("ps aux", flags=no_title_no_resize)
 
     mem_bytes = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')  # e.g. 4015976448
@@ -195,7 +202,7 @@ def frame_commands():
 
     imgui.text(f"{cpu_freq_text}, {cpu_count_text}")
     line_len = len("".join(metric_lines[0])) if metric_lines[0] else 0
-    metric_line_len = 135
+    metric_line_len = 50
     line_len = min(metric_line_len, line_len + 1)
 
     imgui.text("-"*line_len + "\\")
@@ -224,14 +231,23 @@ def frame_commands():
     imgui.text("-"*line_len + "/")
     imgui.end()
 
-    imgui.set_next_window_size(width - 2250, height - 1150)
-    imgui.set_next_window_position(1750, 1100)
+    imgui.set_next_window_size(column_widths[column_index], height - 850)
+    imgui.set_next_window_position(x_positions[column_index], 800)
     imgui.begin("filler 1", flags=no_title_no_resize)
     imgui.end()
 
     # column 4
-    imgui.set_next_window_size(400, 50)
-    imgui.set_next_window_position(width - 450, 50)
+    column_index += 1
+
+    imgui.set_next_window_size(column_widths[column_index], height - 100)
+    imgui.set_next_window_position(x_positions[column_index], 50)
+    imgui.begin("filler 2", flags=no_title_no_resize)
+    imgui.end()
+
+    # column 5
+    column_index += 1
+    imgui.set_next_window_size(column_widths[column_index], 50)
+    imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("clock", flags=no_title_no_resize)
 
     now = datetime.now()
@@ -239,16 +255,16 @@ def frame_commands():
     imgui.text(f"{fmt} -- {io.framerate:.2f}fps")
     imgui.end()
 
-    imgui.set_next_window_size(400, height - 650)
-    imgui.set_next_window_position(width-450, 150)
-    imgui.begin("filler 2", flags=no_title_no_resize)
+    imgui.set_next_window_size(column_widths[column_index], height - 650)
+    imgui.set_next_window_position(x_positions[column_index], 150)
+    imgui.begin("filler 3", flags=no_title_no_resize)
     imgui.end()
 
-    imgui.set_next_window_size(400, 400)
-    imgui.set_next_window_position(width-450, height-450)
+    imgui.set_next_window_size(column_widths[column_index], 400)
+    imgui.set_next_window_position(x_positions[column_index], height-450)
 
     imgui.begin("Git History", flags=no_title_no_resize)
-    imgui.text(result)
+    imgui.text(git_activity)
     imgui.end()
 
 
