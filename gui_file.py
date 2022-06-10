@@ -18,6 +18,7 @@ from screeninfo import get_monitors
 from datetime import datetime
 import psutil
 from barcode_reader import get_barcode
+from functools import reduce
 
 monitor = get_monitors()[0]
 width = monitor.width
@@ -107,13 +108,7 @@ def frame_commands():
 
     no_title_no_resize = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
 
-    imgui.set_next_window_size(400, 400)
-    imgui.set_next_window_position(width-450, height-450)
-
-    imgui.begin("Git History", flags=no_title_no_resize)
-    imgui.text(result)
-    imgui.end()
-
+    # column 1
     imgui.set_next_window_size(500, height-100)
     imgui.set_next_window_position(50, 50)
     imgui.begin("Project List", flags=no_title_no_resize | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR)
@@ -146,6 +141,7 @@ def frame_commands():
                 os.chdir(cwd)
     imgui.end()
 
+    # column 2
     for _ in range(source_speed):
         char_to_be_added = source[source_index]
         # if char_to_be_added == "\t":
@@ -173,16 +169,9 @@ def frame_commands():
                                                          0.054901960784313725, 1), contents)
     imgui.end()
 
-    imgui.set_next_window_size(400, 50)
-    imgui.set_next_window_position(width - 450, 50)
-    imgui.begin("clock", flags=no_title_no_resize)
+    # column 3
 
-    now = datetime.now()
-    fmt = now.strftime("%c")  #"%A %B  - %H:%M:%S")
-    imgui.text(f" -- {fmt} --")
-    imgui.end()
-
-    imgui.set_next_window_size(1300, 1000)
+    imgui.set_next_window_size(width - 2250, 1000)
     imgui.set_next_window_position(1750, 50)
     imgui.begin("ps aux", flags=no_title_no_resize)
 
@@ -206,14 +195,20 @@ def frame_commands():
 
     imgui.text(f"{cpu_freq_text}, {cpu_count_text}")
     line_len = len("".join(metric_lines[0])) if metric_lines[0] else 0
-    line_len = min(100, line_len + 1)
+    metric_line_len = 135
+    line_len = min(metric_line_len, line_len + 1)
 
     imgui.text("-"*line_len + "\\")
 
     for i in range(num_lines-1, -1, -1):
-        if i == num_lines - 1:
-            metric_lines[i].append(metric_message[metric_index])
-            metric_index = (metric_index + 1) % len(metric_message)
+        if i == 0:
+            four_bits = []
+            for _ in range(4):
+                four_bits.append(1 if metric_message[metric_index] == "#" else 0)
+                metric_index = (metric_index + 1) % len(metric_message)
+            hex_digit = sum([(1 << (3-i)) * four_bits[i] for i in range(4)])
+            hex_digit ^= (((source_index >> 4) ^ 0b1010) & 0b1111)
+            metric_lines[i].append('0123456789abcdef'[hex_digit])
         elif i == ram_index == cpu_index:
             metric_lines[i].append("X")
         elif i == ram_index:
@@ -222,11 +217,38 @@ def frame_commands():
             metric_lines[i].append("<")
         else:
             metric_lines[i].append(" ")
-        if len(metric_lines[i]) > 100:
-            metric_lines[i] = metric_lines[i][-100:]
+        if len(metric_lines[i]) > metric_line_len:
+            metric_lines[i] = metric_lines[i][-metric_line_len:]
 
         imgui.text("".join(metric_lines[i]) + "|")
     imgui.text("-"*line_len + "/")
+    imgui.end()
+
+    imgui.set_next_window_size(width - 2250, height - 1150)
+    imgui.set_next_window_position(1750, 1100)
+    imgui.begin("filler 1", flags=no_title_no_resize)
+    imgui.end()
+
+    # column 4
+    imgui.set_next_window_size(400, 50)
+    imgui.set_next_window_position(width - 450, 50)
+    imgui.begin("clock", flags=no_title_no_resize)
+
+    now = datetime.now()
+    fmt = now.strftime("%y/%m/%d - %H:%M:%S")
+    imgui.text(f"{fmt} -- {io.framerate:.2f}fps")
+    imgui.end()
+
+    imgui.set_next_window_size(400, height - 650)
+    imgui.set_next_window_position(width-450, 150)
+    imgui.begin("filler 2", flags=no_title_no_resize)
+    imgui.end()
+
+    imgui.set_next_window_size(400, 400)
+    imgui.set_next_window_position(width-450, height-450)
+
+    imgui.begin("Git History", flags=no_title_no_resize)
+    imgui.text(result)
     imgui.end()
 
 

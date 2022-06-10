@@ -18,7 +18,7 @@ with DatabaseObject(db_file) as dbo:
         if os.path.exists(f"{location}/.git"):
             PROJECTS_FOLDERS.append(location)
 
-DITHERING_BLOCKS = list("_*:#")
+DITHERING_BLOCKS = list(".*:#")
 
 
 def get_git_log(project_index):
