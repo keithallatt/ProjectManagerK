@@ -120,7 +120,6 @@ def frame_commands():
     imgui.begin("Project List", flags=no_title_no_resize | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR)
     imgui.text("Open Project...\n---------------")
     with DatabaseObject(db_file) as dbo:
-        # dbo.register_project(proj_name, loc)
         cats = dbo.get_categories()
         for project_row in dbo.get_projects():
             name = project_row['project_name']
@@ -145,6 +144,19 @@ def frame_commands():
                 os.chdir(loc)
                 os.system(f"gnome-terminal")
                 os.chdir(cwd)
+
+    imgui.text("---------")
+
+    if imgui.button("test"):
+        cwd = os.getcwd()
+        now = datetime.now().strftime("%y/%m/%d - %H:%M:%S")
+        with DatabaseObject(db_file) as dbo:
+            for project_row in dbo.get_projects():
+                loc = project_row['project_location']
+                os.chdir(loc)
+                os.system(f"git add --all; git commit -m \"autocompile {now}\"")
+        os.chdir(cwd)
+
     imgui.end()
 
     # column 2
