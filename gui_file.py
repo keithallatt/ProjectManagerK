@@ -28,7 +28,6 @@ import gitlog
 from screeninfo import get_monitors
 from datetime import datetime
 import psutil
-from barcode_reader import get_barcode
 import re
 
 
@@ -38,15 +37,6 @@ height = monitor.height - 50
 
 path_to_font = "/home/kallatt/Documents/Fonts/PragmataPro_Mono_R_liga_0826.ttf"
 
-with open("hackertyper.txt", "r") as hacker_typer:
-    source = hacker_typer.read()
-if not os.path.exists("hackertyper.txt"):
-    source = "."
-
-
-def gln(n):
-    return f"{hex(n)[2:].rjust(6)}\t"
-
 
 def gst(location):
     cwd = os.getcwd()
@@ -55,34 +45,15 @@ def gst(location):
     res = res.decode('utf-8')
     os.chdir(cwd)
 
-    bits = {
-        "dirty": False,
-        "untracked": False,
-        "ahead": False,
-        "newfile": False,
-        "renamed": False,
-        "deleted": False
-    }
-
-    bit_chars = {
-        "renamed": ">",
-        "ahead": "*",
-        "newfile": "+",
-        "untracked": "?",
-        "deleted": "x",
-        "dirty": "!",
-    }
+    gst_bits = {k: False for k in "!?*+>x"}
 
     for line in res.split("\n"):
-        for key, grep in zip(
-            ["dirty", "untracked", "ahead", "newfile", "renamed", "deleted"],
-            ["modified:", "Untracked files", "Your branch is ahead of", "new file:", "renamed:", "deleted:"]
-        ):
+        for key, grep in zip(list("!?*+>x"), ["modified:", "Untracked files", "Your branch is ahead of",
+                                              "new file:", "renamed:", "deleted:"]):
             if grep in line:
-                bits[key] = True
+                gst_bits[key] = True
 
-    bits_str = "".join([bit_chars[key] for key in bit_chars.keys() if bits[key]])
-    return bits_str
+    return "".join([k for k, v in gst_bits.items() if v])
 
 
 def get_ram_usage():
@@ -94,10 +65,6 @@ def get_ram_usage():
     return int(psutil.virtual_memory().total - psutil.virtual_memory().available)
 
 
-contents = gln(1)
-source_index = 0
-source_speed = 32
-line_number = 1
 opened_state = True
 git_activity = gitlog.plot_git_activity()
 project_registration_sheet = None
@@ -105,8 +72,7 @@ project_removal_verification = None
 
 
 def frame_commands():
-    global contents, source, source_index, source_speed, line_number, \
-        git_activity, project_registration_sheet, project_removal_verification
+    global git_activity, project_registration_sheet, project_removal_verification
     gl.glClearColor(0.1, 0.1, 0.1, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
