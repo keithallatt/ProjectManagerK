@@ -85,7 +85,6 @@ def gst(location):
     return bits_str
 
 
-
 def get_ram_usage():
     """
     Obtains the absolute number of RAM bytes currently in use by the system.
@@ -100,15 +99,14 @@ source_index = 0
 source_speed = 32
 line_number = 1
 opened_state = True
-metric_message, metric_index = " "*100 + get_barcode(), 0
-hex_line = "0" * 32
 git_activity = gitlog.plot_git_activity()
 project_registration_sheet = None
+project_removal_verification = None
 
 
 def frame_commands():
     global contents, source, source_index, source_speed, line_number, \
-        metric_index, metric_message, git_activity, project_registration_sheet, hex_line
+        git_activity, project_registration_sheet, project_removal_verification
     gl.glClearColor(0.1, 0.1, 0.1, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
@@ -118,8 +116,9 @@ def frame_commands():
         sys.exit(0)
 
     restricted_flags = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
+    restricted_with_scroll = restricted_flags | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR
 
-    column_widths = [1000, 1000, 1000, 585]
+    column_widths = [700, 750, 700, 400]
     x_positions = [50]
     for x in column_widths[:-1]:
         x_positions.append(x_positions[-1] + x + 50)
@@ -130,7 +129,7 @@ def frame_commands():
     # column 1
     imgui.set_next_window_size(column_widths[column_index], height-100)
     imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("Project List", flags=restricted_flags | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR)
+    imgui.begin("Project List", flags=restricted_with_scroll)
     imgui.text("Open Project...\n---------------")
     with DatabaseObject(db_file) as dbo:
         cats = dbo.get_categories()
@@ -154,7 +153,7 @@ def frame_commands():
 
             vcs_upstream = f"Upstream: {vcs_upstream}"
             button_text = [
-                cats[cat_id] + ": " + name,
+                cats.get(cat_id, "-") + ": " + name,
                 f"\t~/{os.path.relpath(loc, os.path.expanduser('~'))}",
                 f"\t{vcs_upstream}{status}"
             ]
@@ -163,11 +162,12 @@ def frame_commands():
                 os.chdir(loc)
                 os.system(f"gnome-terminal")
                 os.chdir(cwd)
+
     imgui.end()
 
     # column 2
     column_index += 1
-    imgui.set_next_window_size(column_widths[column_index], 600)
+    imgui.set_next_window_size(column_widths[column_index], 80)
     imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("ps aux", flags=restricted_flags)
 
@@ -187,25 +187,13 @@ def frame_commands():
     ram_index = int(bar_len * ram_usage / mem_gib)
     cpu_index = int(bar_len * (cpu_freq * 1000 - cfo.min) / (cfo.max - cfo.min))
 
-    imgui.text("+- verification -" + "-"*16 + "+\n|" + hex_line + "|\n+" + '-'*32 + "+\n\n")
     imgui.text(f"RAM |{('#' * ram_index).ljust(bar_len)}| {ram_usage:.1f} / {mem_gib:.1f} GiB RAM Used.")
     imgui.text(f"CPU |{('#' * cpu_index).ljust(bar_len)}| {cpu_freq_text}, {cpu_count_text}")
 
-    four_bits = []
-    for _ in range(4):
-        four_bits.append(1 if metric_message[metric_index] == "#" else 0)
-        metric_index = (metric_index + 1) % len(metric_message)
-    hex_digit = sum([(1 << (3-i)) * four_bits[i] for i in range(4)])
-    hex_digit ^= (((source_index >> 4) ^ 0b1010) & 0b1111)
-    digit = '0123456789abcdef'[hex_digit]
-
-    hex_line += digit
-    hex_line = hex_line[-32:]
-
     imgui.end()
 
-    imgui.set_next_window_size(column_widths[column_index], height - 750)
-    imgui.set_next_window_position(x_positions[column_index], 700)
+    imgui.set_next_window_size(column_widths[column_index], 300)
+    imgui.set_next_window_position(x_positions[column_index], 180)
     imgui.begin("code commit", flags=restricted_flags)
 
     if imgui.button(" - Commit Code - "):
@@ -235,9 +223,13 @@ def frame_commands():
 
         os.chdir(cwd)
 
-    imgui.text("\n\n - Register Project - ")
+    imgui.end()
 
-    # imgui.same_line()
+    imgui.set_next_window_size(column_widths[column_index], 300)
+    imgui.set_next_window_position(x_positions[column_index], 530)
+    imgui.begin("project registration", flags=restricted_flags)
+
+    imgui.text(" - Register Project - ")
 
     json_obj = {
         "project_name": "",
@@ -247,7 +239,8 @@ def frame_commands():
         "category_id": None
     }
 
-    changed, json_format = imgui.input_text_multiline("label", json.dumps(json_obj, indent=2), 1024, 700, 250)
+    changed, json_format = imgui.input_text_multiline("", json.dumps(json_obj, indent=2), 1024,
+                                                      column_widths[column_index]-10, 210)
 
     if changed:
         project_registration_sheet = json_format
@@ -270,12 +263,27 @@ def frame_commands():
 
     imgui.end()
 
+    imgui.set_next_window_size(column_widths[column_index], height - 980)
+    imgui.set_next_window_position(x_positions[column_index], 880)
+    imgui.begin("project removal", flags=restricted_flags)
+
+    changed, removal_format = imgui.input_text("", "", 256)
+
+    if changed:
+        project_removal_verification = removal_format
+
+    if imgui.button("Remove Project"):
+        with DatabaseObject(db_file) as dbo:
+            dbo.remove_project(project_removal_verification)
+
+    imgui.end()
+
     # column 3
     column_index += 1
 
     imgui.set_next_window_size(column_widths[column_index], height - 100)
     imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("dbo_info", flags=restricted_flags)
+    imgui.begin("dbo_info", flags=restricted_with_scroll)
 
     with DatabaseObject(db_file) as dbo:
         imgui.text(str(dbo))

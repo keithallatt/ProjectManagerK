@@ -155,6 +155,10 @@ class DatabaseObject:
 
         self.conn.execute(update_query)
 
+    def remove_project(self, project_name):
+        delete_query = f"DELETE FROM projects WHERE project_name='{project_name}'"
+        self.conn.execute(delete_query)
+
     def __enter__(self):
         file = self.file
         dir_name = file[:-len(file.split("/")[-1])]
@@ -199,9 +203,16 @@ class DatabaseObject:
             col_ind = df.columns
             col_lst = list(col_ind)
 
-            for unwanted in ['project_location', 'project_board', 'category_id', 'color', 'vcs_upstream']:
+            for unwanted in ['project_location', 'project_board', 'color', 'vcs_upstream', 'created', 'modified']:
                 if unwanted in col_lst:
                     col_lst.remove(unwanted)
+
+            if 'category_id' in col_lst:
+                # projects table
+                categories = self.get_categories()
+                df['category'] = df['category_id'].apply(lambda x: '' if pd.isna(x) else categories[x])
+                col_lst.append("category")
+                col_lst.remove('category_id')
 
             col_ind = pd.Index(col_lst)
 
