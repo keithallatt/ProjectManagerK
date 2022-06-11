@@ -29,7 +29,8 @@ from screeninfo import get_monitors
 from datetime import datetime
 import psutil
 from barcode_reader import get_barcode
-from functools import reduce
+import re
+
 
 monitor = get_monitors()[0]
 width = monitor.width
@@ -44,7 +45,7 @@ if not os.path.exists("hackertyper.txt"):
 
 
 def gln(n):
-    return f"{str(n).rjust(5)}\t"
+    return f"{hex(n)[2:].rjust(6)}\t"
 
 
 def gst(location):
@@ -96,7 +97,7 @@ def get_ram_usage():
 
 contents = gln(1)
 source_index = 0
-source_speed = 16
+source_speed = 32
 line_number = 1
 opened_state = True
 metric_lines = [
@@ -104,10 +105,11 @@ metric_lines = [
 ]
 metric_message, metric_index = " "*100 + get_barcode(), 0
 git_activity = gitlog.plot_git_activity()
+project_registration_sheet = None
 
 
 def frame_commands():
-    global contents, source, source_index, source_speed, line_number, metric_index, metric_message, git_activity
+    global contents, source, source_index, source_speed, line_number, metric_index, metric_message, git_activity, project_registration_sheet
     gl.glClearColor(0.1, 0.1, 0.1, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
@@ -118,13 +120,14 @@ def frame_commands():
 
     no_title_no_resize = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
 
-    column_widths = [500, 1100, 600, 935, 400]
+    column_widths = [700, 1100, 600, 735, 400]
     x_positions = [50]
     for x in column_widths[:-1]:
         x_positions.append(x_positions[-1] + x + 50)
     x_positions[-1] = width - 50 - column_widths[-1]
 
     column_index = 0
+
     # column 1
     imgui.set_next_window_size(column_widths[column_index], height-100)
     imgui.set_next_window_position(x_positions[column_index], 50)
@@ -144,6 +147,11 @@ def frame_commands():
 
             if vcs_upstream is None:
                 vcs_upstream = "Local"
+            else:
+                pattern = re.compile(r"https://github.com/([^/]+)/([^/]+)\.git")
+                match = re.match(pattern, vcs_upstream)
+                vcs_upstream = f"GitHub: {match.group(2)}"
+
             vcs_upstream = f"Git Upstream: {vcs_upstream}"
             button_text = [
                 cats[cat_id] + ": " + name,
@@ -169,26 +177,25 @@ def frame_commands():
         if char_to_be_added == "\n":
             line_number += 1
             contents += gln(line_number)
-
-        line_cutoff = 79
-        if contents.count("\n") >= line_cutoff:
-            contents = "\n".join(contents.split("\n")[-line_cutoff:])
         source_index += 1
         source_index %= len(source)
+
+    line_cutoff = 79
+    if contents.count("\n") >= line_cutoff:
+        contents = "\n".join(contents.split("\n")[-line_cutoff:])
 
     imgui.set_next_window_size(column_widths[column_index], height-100)
     imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("", flags=no_title_no_resize)
-    # col=
+
     draw_list = imgui.get_window_draw_list()
-    draw_list.add_text(x_positions[column_index] + 20, 75, imgui.get_color_u32_rgba(0.12549019607843137,
-                                                                         0.7607843137254902,
-                                                                         0.054901960784313725, 1), contents)
+    hacker_green = imgui.get_color_u32_rgba(0.12549019607843137, 0.7607843137254902, 0.054901960784313725, 1)
+    draw_list.add_text(x_positions[column_index] + 20, 75, hacker_green, contents)
     imgui.end()
 
     # column 3
     column_index += 1
-    imgui.set_next_window_size(column_widths[column_index], 700)
+    imgui.set_next_window_size(column_widths[column_index], 600)
     imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("ps aux", flags=no_title_no_resize)
 
@@ -241,8 +248,8 @@ def frame_commands():
     imgui.text("-"*line_len + "/")
     imgui.end()
 
-    imgui.set_next_window_size(column_widths[column_index], height - 850)
-    imgui.set_next_window_position(x_positions[column_index], 800)
+    imgui.set_next_window_size(column_widths[column_index], height - 750)
+    imgui.set_next_window_position(x_positions[column_index], 700)
     imgui.begin("code commit", flags=no_title_no_resize)
 
     if imgui.button(" - Commit Code - "):
@@ -260,16 +267,65 @@ def frame_commands():
 
         os.chdir(cwd)
 
+    imgui.text(" - Register Project - ")
 
+    # imgui.same_line()
+
+    json_obj = {
+        "project_name": "",
+        "project_location": str(os.path.expanduser("~")),
+        "project_board": None,
+        "vcs_upstream": None,
+        "category_id": None
+    }
+
+    changed, json_format = imgui.input_text_multiline("label", json.dumps(json_obj, indent=2), 1024, 700, 250)
+
+    if changed:
+        project_registration_sheet = json_format
+
+    if imgui.button("Register"):
+        successful = True
+        if project_registration_sheet is None:
+            successful = False
+        else:
+            try:
+                json_obj = json.loads(project_registration_sheet)
+            except json.JSONDecodeError:
+                successful = False
+
+        if successful:
+            with DatabaseObject(db_file) as dbo:
+                dbo.register_project(**json_obj)
+
+        project_registration_sheet = None
 
     imgui.end()
+
+
+    """
+        
+{
+  "project_name": "CustomIDE",
+  "project_location": "/home/kallatt/PycharmProjects/CustomIDE",
+  "project_board": null,
+  "vcs_upstream": "https://github.com/keithallatt/CustomIDE.git",
+  "category_id": 1
+}
+        
+        """
+
 
     # column 4
     column_index += 1
 
     imgui.set_next_window_size(column_widths[column_index], height - 100)
     imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("filler 2", flags=no_title_no_resize)
+    imgui.begin("dbo_info", flags=no_title_no_resize)
+
+    with DatabaseObject(db_file) as dbo:
+        imgui.text(str(dbo))
+
     imgui.end()
 
     # column 5

@@ -114,10 +114,12 @@ class DatabaseObject:
             rows.append({k: v for k, v in zip(cols, row)})
         return rows
 
-    def register_project(self, project_name, project_location, project_board=None, category_id=None):
+    def register_project(self, project_name, project_location, project_board=None, vcs_upstream=None, category_id=None):
+        if not os.path.exists(project_location):
+            return
         strf_format = "%Y-%m-%d %H:%M:%S"
-        ti_c = time.strftime(strf_format, time.gmtime(os.path.getctime(loc)))
-        ti_m = time.strftime(strf_format, time.gmtime(os.path.getmtime(loc)))
+        ti_c = time.strftime(strf_format, time.gmtime(os.path.getctime(project_location)))
+        ti_m = time.strftime(strf_format, time.gmtime(os.path.getmtime(project_location)))
 
         row_data = {
             'project_name': project_name,
@@ -128,6 +130,9 @@ class DatabaseObject:
 
         if project_board is not None:
             row_data['project_board'] = project_board
+
+        if vcs_upstream is not None:
+            row_data['vcs_upstream'] = vcs_upstream
 
         if category_id is not None:
             row_data['category_id'] = category_id
