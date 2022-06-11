@@ -119,7 +119,7 @@ def frame_commands():
 
     restricted_flags = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
 
-    column_widths = [1000, 1400, 735, 400]
+    column_widths = [1000, 1000, 1000, 585]
     x_positions = [50]
     for x in column_widths[:-1]:
         x_positions.append(x_positions[-1] + x + 50)
@@ -149,7 +149,8 @@ def frame_commands():
             else:
                 pattern = re.compile(r"https://github.com/([^/]+)/([^/]+)\.git")
                 match = re.match(pattern, vcs_upstream)
-                vcs_upstream = "{"+f"GitHub->{match.group(2)}"+"}"
+                if match is not None:
+                    vcs_upstream = "{"+f"GitHub->{match.group(2)}"+"}"
 
             vcs_upstream = f"Upstream: {vcs_upstream}"
             button_text = [
@@ -268,19 +269,6 @@ def frame_commands():
         project_registration_sheet = None
 
     imgui.end()
-
-
-    """
-        
-{
-  "project_name": "CustomIDE",
-  "project_location": "/home/kallatt/PycharmProjects/CustomIDE",
-  "project_board": null,
-  "vcs_upstream": "https://github.com/keithallatt/CustomIDE.git",
-  "category_id": 1
-}
-        
-        """
 
     # column 3
     column_index += 1
