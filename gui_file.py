@@ -100,16 +100,15 @@ source_index = 0
 source_speed = 32
 line_number = 1
 opened_state = True
-metric_lines = [
-    [] for _ in range(16)
-]
 metric_message, metric_index = " "*100 + get_barcode(), 0
+hex_line = "0" * 32
 git_activity = gitlog.plot_git_activity()
 project_registration_sheet = None
 
 
 def frame_commands():
-    global contents, source, source_index, source_speed, line_number, metric_index, metric_message, git_activity, project_registration_sheet
+    global contents, source, source_index, source_speed, line_number, \
+        metric_index, metric_message, git_activity, project_registration_sheet, hex_line
     gl.glClearColor(0.1, 0.1, 0.1, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
@@ -118,9 +117,9 @@ def frame_commands():
     if io.key_ctrl and io.keys_down[glfw.KEY_Q]:
         sys.exit(0)
 
-    no_title_no_resize = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
+    restricted_flags = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
 
-    column_widths = [700, 1100, 600, 735, 400]
+    column_widths = [1000, 1400, 735, 400]
     x_positions = [50]
     for x in column_widths[:-1]:
         x_positions.append(x_positions[-1] + x + 50)
@@ -131,7 +130,7 @@ def frame_commands():
     # column 1
     imgui.set_next_window_size(column_widths[column_index], height-100)
     imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("Project List", flags=no_title_no_resize | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR)
+    imgui.begin("Project List", flags=restricted_flags | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR)
     imgui.text("Open Project...\n---------------")
     with DatabaseObject(db_file) as dbo:
         cats = dbo.get_categories()
@@ -150,9 +149,9 @@ def frame_commands():
             else:
                 pattern = re.compile(r"https://github.com/([^/]+)/([^/]+)\.git")
                 match = re.match(pattern, vcs_upstream)
-                vcs_upstream = f"GitHub: {match.group(2)}"
+                vcs_upstream = "{"+f"GitHub->{match.group(2)}"+"}"
 
-            vcs_upstream = f"Git Upstream: {vcs_upstream}"
+            vcs_upstream = f"Upstream: {vcs_upstream}"
             button_text = [
                 cats[cat_id] + ": " + name,
                 f"\t~/{os.path.relpath(loc, os.path.expanduser('~'))}",
@@ -167,43 +166,13 @@ def frame_commands():
 
     # column 2
     column_index += 1
-    for _ in range(source_speed):
-        char_to_be_added = source[source_index]
-        # if char_to_be_added == "\t":
-        #     char_to_be_added = "|   "
-
-        contents += char_to_be_added
-
-        if char_to_be_added == "\n":
-            line_number += 1
-            contents += gln(line_number)
-        source_index += 1
-        source_index %= len(source)
-
-    line_cutoff = 79
-    if contents.count("\n") >= line_cutoff:
-        contents = "\n".join(contents.split("\n")[-line_cutoff:])
-
-    imgui.set_next_window_size(column_widths[column_index], height-100)
-    imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("", flags=no_title_no_resize)
-
-    draw_list = imgui.get_window_draw_list()
-    hacker_green = imgui.get_color_u32_rgba(0.12549019607843137, 0.7607843137254902, 0.054901960784313725, 1)
-    draw_list.add_text(x_positions[column_index] + 20, 75, hacker_green, contents)
-    imgui.end()
-
-    # column 3
-    column_index += 1
     imgui.set_next_window_size(column_widths[column_index], 600)
     imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("ps aux", flags=no_title_no_resize)
+    imgui.begin("ps aux", flags=restricted_flags)
 
     mem_bytes = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')  # e.g. 4015976448
     mem_gib = mem_bytes / (1024. ** 3)  # e.g. 3.74
     ram_usage = get_ram_usage() / (1024. ** 3)
-
-    imgui.text(f"{ram_usage:.1f} / {mem_gib:.1f} GiB RAM Used.")
 
     cfo = psutil.cpu_freq()
     cpu_freq = cfo.current / 1000
@@ -212,45 +181,31 @@ def frame_commands():
     cpu_freq_text = f"ClkSpd {cpu_freq:.2f}GHz"
     cpu_count_text = f"CPUCores: {cpu_count}"
 
-    num_lines = len(metric_lines)
+    bar_len = 25
 
-    ram_index = int(num_lines * ram_usage / mem_gib)
-    cpu_index = int(num_lines * (cpu_freq * 1000 - cfo.min) / (cfo.max - cfo.min))
+    ram_index = int(bar_len * ram_usage / mem_gib)
+    cpu_index = int(bar_len * (cpu_freq * 1000 - cfo.min) / (cfo.max - cfo.min))
 
-    imgui.text(f"{cpu_freq_text}, {cpu_count_text}")
-    line_len = len("".join(metric_lines[0])) if metric_lines[0] else 0
-    metric_line_len = 50
-    line_len = min(metric_line_len, line_len + 1)
+    imgui.text("+- verification -" + "-"*16 + "+\n|" + hex_line + "|\n+" + '-'*32 + "+\n\n")
+    imgui.text(f"RAM |{('#' * ram_index).ljust(bar_len)}| {ram_usage:.1f} / {mem_gib:.1f} GiB RAM Used.")
+    imgui.text(f"CPU |{('#' * cpu_index).ljust(bar_len)}| {cpu_freq_text}, {cpu_count_text}")
 
-    imgui.text("-"*line_len + "\\")
+    four_bits = []
+    for _ in range(4):
+        four_bits.append(1 if metric_message[metric_index] == "#" else 0)
+        metric_index = (metric_index + 1) % len(metric_message)
+    hex_digit = sum([(1 << (3-i)) * four_bits[i] for i in range(4)])
+    hex_digit ^= (((source_index >> 4) ^ 0b1010) & 0b1111)
+    digit = '0123456789abcdef'[hex_digit]
 
-    for i in range(num_lines-1, -1, -1):
-        if i == 0:
-            four_bits = []
-            for _ in range(4):
-                four_bits.append(1 if metric_message[metric_index] == "#" else 0)
-                metric_index = (metric_index + 1) % len(metric_message)
-            hex_digit = sum([(1 << (3-i)) * four_bits[i] for i in range(4)])
-            hex_digit ^= (((source_index >> 4) ^ 0b1010) & 0b1111)
-            metric_lines[i].append('0123456789abcdef'[hex_digit])
-        elif i == ram_index == cpu_index:
-            metric_lines[i].append("X")
-        elif i == ram_index:
-            metric_lines[i].append(">")
-        elif i == cpu_index:
-            metric_lines[i].append("<")
-        else:
-            metric_lines[i].append(" ")
-        if len(metric_lines[i]) > metric_line_len:
-            metric_lines[i] = metric_lines[i][-metric_line_len:]
+    hex_line += digit
+    hex_line = hex_line[-32:]
 
-        imgui.text("".join(metric_lines[i]) + "|")
-    imgui.text("-"*line_len + "/")
     imgui.end()
 
     imgui.set_next_window_size(column_widths[column_index], height - 750)
     imgui.set_next_window_position(x_positions[column_index], 700)
-    imgui.begin("code commit", flags=no_title_no_resize)
+    imgui.begin("code commit", flags=restricted_flags)
 
     if imgui.button(" - Commit Code - "):
         cwd = os.getcwd()
@@ -267,7 +222,19 @@ def frame_commands():
 
         os.chdir(cwd)
 
-    imgui.text(" - Register Project - ")
+    if imgui.button(" - Pull Code - "):
+        cwd = os.getcwd()
+        with DatabaseObject(db_file) as dbo:
+            for project_row in dbo.get_projects():
+                loc = project_row['project_location']
+                vcs_upstream = project_row['vcs_upstream']
+                if vcs_upstream is not None:
+                    os.chdir(loc)
+                    os.system("git pull")
+
+        os.chdir(cwd)
+
+    imgui.text("\n\n - Register Project - ")
 
     # imgui.same_line()
 
@@ -315,24 +282,23 @@ def frame_commands():
         
         """
 
-
-    # column 4
+    # column 3
     column_index += 1
 
     imgui.set_next_window_size(column_widths[column_index], height - 100)
     imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("dbo_info", flags=no_title_no_resize)
+    imgui.begin("dbo_info", flags=restricted_flags)
 
     with DatabaseObject(db_file) as dbo:
         imgui.text(str(dbo))
 
     imgui.end()
 
-    # column 5
+    # column 4
     column_index += 1
     imgui.set_next_window_size(column_widths[column_index], 50)
     imgui.set_next_window_position(x_positions[column_index], 50)
-    imgui.begin("clock", flags=no_title_no_resize)
+    imgui.begin("clock", flags=restricted_flags)
 
     now = datetime.now()
     fmt = now.strftime("%y/%m/%d - %H:%M:%S")
@@ -341,13 +307,13 @@ def frame_commands():
 
     imgui.set_next_window_size(column_widths[column_index], height - 650)
     imgui.set_next_window_position(x_positions[column_index], 150)
-    imgui.begin("filler 3", flags=no_title_no_resize)
+    imgui.begin("filler 3", flags=restricted_flags)
     imgui.end()
 
     imgui.set_next_window_size(column_widths[column_index], 400)
     imgui.set_next_window_position(x_positions[column_index], height-450)
 
-    imgui.begin("Git History", flags=no_title_no_resize)
+    imgui.begin("Git History", flags=restricted_flags)
     imgui.text(git_activity)
     imgui.end()
 
