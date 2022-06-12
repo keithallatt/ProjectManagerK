@@ -191,11 +191,15 @@ def frame_commands():
             for project_row in dbo.get_projects():
                 loc = project_row['project_location']
                 vcs_upstream = project_row['vcs_upstream']
-                os.chdir(loc)
-                os.system(f"git add --all; git commit -m \"autocompile {now}\"")
 
-                if vcs_upstream is not None:
-                    os.system("git push")
+                if ".git" in os.listdir(loc):
+                    os.chdir(loc)
+                    os.system(f"git add --all; git commit -m \"autocompile {now}\"")
+
+                    if vcs_upstream is not None:
+                        os.system("git push")
+                else:
+                    print(f"no .git in {loc}")
 
         os.chdir(cwd)
 
@@ -206,8 +210,11 @@ def frame_commands():
                 loc = project_row['project_location']
                 vcs_upstream = project_row['vcs_upstream']
                 if vcs_upstream is not None:
-                    os.chdir(loc)
-                    os.system("git pull")
+                    if ".git" in os.listdir(loc):
+                        os.chdir(loc)
+                        os.system("git pull")
+                    else:
+                        print(f"no .git in {loc}")
 
         os.chdir(cwd)
 

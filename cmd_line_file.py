@@ -20,21 +20,22 @@ exit_ = ['q', 'quit', 'exit']
 
 
 def gst(location):
+    """ get the git status of a project """
     cwd = os.getcwd()
     os.chdir(location)
     res = subprocess.check_output(['git', 'status'])
     res = res.decode('utf-8')
     os.chdir(cwd)
 
-    gst_bits = {k: False for k in "!?*+>x"}
+    gst_bits = set()
 
     for line in res.split("\n"):
         for key, grep in zip(list("!?*+>x"), ["modified:", "Untracked files", "Your branch is ahead of",
                                               "new file:", "renamed:", "deleted:"]):
             if grep in line:
-                gst_bits[key] = True
+                gst_bits.add(key)
 
-    return "".join([k for k, v in gst_bits.items() if v])
+    return "".join(gst_bits)
 
 
 class FilepathValidator(Validator):
@@ -110,6 +111,36 @@ main_loop_prompt = [
 ]
 
 
+def mainloop_status():
+    with DatabaseObject(db_file) as _dbo:
+        cats = _dbo.get_categories()
+        status_lines = []
+        for project_row in _dbo.get_projects():
+            name = project_row['project_name']
+            loc = project_row['project_location']
+            cat_id = project_row['category_id']
+            vcs_upstream = project_row['vcs_upstream']
+
+            status = gst(loc)
+            if status:
+                status = f" ({status})"
+
+            if vcs_upstream is None:
+                vcs_upstream = "Local"
+            else:
+                pattern = re.compile(r"https://github.com/([^/]+)/([^/]+\.git)")
+                match = re.match(pattern, vcs_upstream)
+                if match is not None:
+                    vcs_upstream = "{" + f"{match.group(2)}" + "}"
+
+            status_lines.append("\n".join([
+                cats.get(cat_id, "-") + ": " + name,
+                f"  ~/{os.path.relpath(loc, os.path.expanduser('~'))}",
+                f"  Upstream: {vcs_upstream}{status}"
+            ]))
+        return "\n-----\n".join(status_lines)
+
+
 def main():
     flags = {
         'quit': False
@@ -124,33 +155,7 @@ def main():
         command = tokens.pop(0)
 
         if command == "status":
-            with DatabaseObject(db_file) as _dbo:
-                cats = _dbo.get_categories()
-                for project_row in _dbo.get_projects():
-                    name = project_row['project_name']
-                    loc = project_row['project_location']
-                    cat_id = project_row['category_id']
-                    vcs_upstream = project_row['vcs_upstream']
-
-                    status = gst(loc)
-                    if status:
-                        status = f" ({status})"
-
-                    if vcs_upstream is None:
-                        vcs_upstream = "Local"
-                    else:
-                        pattern = re.compile(r"https://github.com/([^/]+)/([^/]+)\.git")
-                        match = re.match(pattern, vcs_upstream)
-                        if match is not None:
-                            vcs_upstream = "{" + f"GitHub->{match.group(2)}" + "}"
-
-                    vcs_upstream = f"Upstream: {vcs_upstream}"
-                    button_text = [
-                        cats.get(cat_id, "-") + ": " + name,
-                        f"\t~/{os.path.relpath(loc, os.path.expanduser('~'))}",
-                        f"\t{vcs_upstream}{status}"
-                    ]
-                    print(*button_text, sep="\n")
+            print(mainloop_status())
 
 
 if __name__ == '__main__':

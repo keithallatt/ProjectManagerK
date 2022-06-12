@@ -108,13 +108,8 @@ class DatabaseObject:
         self.conn.execute(query)
 
     def get_projects(self):
-        query = "SELECT * FROM projects;"
-        cursor = self.conn.execute(query)
         cols = self.get_table_cols("projects")
-        rows = []
-        for row in cursor:
-            rows.append({k: v for k, v in zip(cols, row)})
-        return rows
+        return [{k: v for k, v in zip(cols, row)} for row in self.conn.execute("SELECT * FROM projects;")]
 
     def register_project(self, project_name, project_location, project_board=None, vcs_upstream=None, category_id=None):
         if not os.path.exists(project_location):
@@ -232,9 +227,3 @@ def get_dbo_str():
     with DatabaseObject(db_file) as dbo:
         # dbo.register_project(proj_name, loc)
         return str(dbo)
-
-
-if __name__ == '__main__':
-    with DatabaseObject(db_file) as dbo:
-        print(dbo)
-
