@@ -1,7 +1,7 @@
 {
-  "collapse-filter": true,
+  "collapse-filter": false,
   "search": "",
-  "showTags": false,
+  "showTags": true,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
@@ -18,20 +18,20 @@
       "query": "tag:#SQLite",
       "color": {
         "a": 1,
-        "rgb": 14725458
+        "rgb": 5401056
       }
     }
   ],
-  "collapse-display": false,
+  "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": -0.9,
-  "nodeSizeMultiplier": 0.416142907303371,
-  "lineSizeMultiplier": 1.07681706460674,
-  "collapse-forces": false,
-  "centerStrength": 1,
+  "nodeSizeMultiplier": 2.32246313202247,
+  "lineSizeMultiplier": 1.7994294241573,
+  "collapse-forces": true,
+  "centerStrength": 0.749866452991453,
   "repelStrength": 20,
   "linkStrength": 1,
   "linkDistance": 30,
-  "scale": 1.196116935310445,
-  "close": true
+  "scale": 1.4306957229364536,
+  "close": false
 }

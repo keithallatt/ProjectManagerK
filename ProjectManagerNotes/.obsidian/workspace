@@ -6,11 +6,11 @@
       {
         "id": "061e215b5c8721be",
         "type": "leaf",
-        "dimension": 36.91823899371069,
+        "dimension": 43.41880341880342,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Project Notes/Command Line Tool.md",
+            "file": "Project Notes/Milestones.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -20,7 +20,7 @@
       {
         "id": "7f8a2ffbf2751542",
         "type": "leaf",
-        "dimension": 63.081761006289305,
+        "dimension": 56.58119658119658,
         "pinned": true,
         "state": {
           "type": "graph",
@@ -78,15 +78,15 @@
   },
   "active": "061e215b5c8721be",
   "lastOpenFiles": [
-    "Project Notes/Command Line Tool.md",
+    "Project Notes/Milestones.md",
     "Project Notes/_Top.md",
-    "Project Notes/VCS Locations.md",
-    "Project Notes/The GUI.md",
-    "Project Notes/Projects.md",
+    "Project Notes/Tips.md",
+    "Project Notes/Project Boards.md",
+    "Project Notes/Command Line Tool.md",
     "Project Notes/Project Registration and Updating.md",
+    "Project Notes/Projects.md",
     "Project Notes/Project Tracking.md",
-    "Project Notes/Git Integration.md",
-    "GitHub.md",
-    "Project Notes/To Do.md"
+    "CSS Snippets/Untitled.md",
+    "Project Notes/VCS Locations.md"
   ]
 }

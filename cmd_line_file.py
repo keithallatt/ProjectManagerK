@@ -47,15 +47,64 @@ class FilepathValidator(Validator):
 
 
 class MainloopValidator(Validator):
+    @staticmethod
+    def git_validate(document):
+        """ validate on git commands. """
+        tokens = document.text.strip().split(" ")
+        assert tokens.pop(0) == 'git'
+
+        command = tokens.pop(0)
+        args = tokens
+
+        valid_commands = ['commit', 'pull', 'status']
+        if command not in valid_commands:
+            raise ValidationError(message=f"unknown git command {repr(command)}", cursor_position=len(document.text))
+
+        if len(args) == 1:
+            MainloopValidator.project_collision(args[0], document.text, needs_exist=True)
+        elif len(args) > 1:
+            raise ValidationError(message="too many args (expected 1)", cursor_position=len(document.text))
+
+    @staticmethod
+    def project_collision(project_name, doc_text, needs_exist):
+        """
+        Extra validation on a document, verifies that a project either exists or doesn't exist.
+
+        :param project_name: The name of the project
+        :param doc_text: the document text, used for validation errors.
+        :param needs_exist: If True, raises ValidationError on the project not existing, and if False, the reverse.
+        """
+
+        # need to check if the argument is a project.
+        with DatabaseObject(db_file) as _dbo:
+            for row in _dbo.get_projects():
+                if row['project_name'] == project_name:
+                    if needs_exist:
+                        break
+                    else:
+                        raise ValidationError(message="invalid project name: exists", cursor_position=len(doc_text))
+            else:
+                if needs_exist:
+                    raise ValidationError(message="invalid project name: does not exist", cursor_position=len(doc_text))
+
     def validate(self, document):
-        doc_text = document.text
+        doc_text = document.text.strip()
         first_token = doc_text.split(" ")[0]
 
         if first_token in registered_functions:
+            extra_validation = {
+                'git': lambda doc: MainloopValidator.git_validate(doc)
+            }.get(first_token, None)
+            if extra_validation is None:
+                return
+
+            extra_validation(document)
             return
+
         if first_token in exit_:
             return
-        raise ValidationError(message="command does not exist", cursor_position=len(doc_text))
+
+        raise ValidationError(message=f"unknown command {first_token}", cursor_position=len(document.text))
 
 
 project_registration_questions = [
@@ -111,7 +160,6 @@ main_loop_prompt = [
 
 def mainloop_status():
     with DatabaseObject(db_file) as _dbo:
-        cats = _dbo.get_categories()
         status_lines = []
         for project_row in _dbo.get_projects():
             name = project_row['project_name']
@@ -132,7 +180,7 @@ def mainloop_status():
                     vcs_upstream = "{" + f"{match.group(2)}" + "}"
 
             status_lines.append("\n".join([
-                cats.get(cat_id, "-") + ": " + name,
+                categories.get(cat_id, "-") + ": " + name,
                 f"  ~/{os.path.relpath(loc, os.path.expanduser('~'))}",
                 f"  Upstream: {vcs_upstream}{status}"
             ]))

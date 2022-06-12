@@ -6,9 +6,10 @@ Using `PyInquirer` to validate input as it comes in, which will allow for more s
 - [x] Set up prompts for Project Registration
 - [x] Set up prompts for Project Deletion
 - [ ] Set up prompts for Project Updating
-- [ ] Set up main question loop
-- [ ] Set up git prompts
-- [ ] Set up nested Validators for `git` / `registration` and so on
+- [x] Set up main question loop
+- [x] Set up git prompts
+- [x] Set up nested Validators for `git` 
+- [ ] Set up nested Validators for `registration`
 - [ ] Set up other `DatabaseObject` access prompts
 - [ ] 
 
