@@ -4,8 +4,10 @@ import project_board.project_board as proboard
 import pandas as pd
 import time
 
-
-version = "0_0_1a"
+versions = [
+    "0_0_1a"
+]
+version = versions[-1]
 
 db_file = f"./dbfiles/{version}/cms.db"
 table_rows = {
@@ -187,9 +189,11 @@ class DatabaseObject:
         self.conn.close()
 
     def __str__(self):
-        str_chunks = ["-[ DBO ]-"]
+        str_chunks = []
         for table in self.get_all_tables():
-            chunk = f"--- {table} ---"
+            if table not in ["projects"]:
+                continue
+            chunk = f"--- {table.capitalize()} ---"
             cols = self.get_table_cols(table)
             df_dict = {key: [] for key in cols}
 
