@@ -10,6 +10,12 @@ makes graph of commits, looks nice, is in plain text.
 
 """
 
+if __name__ != "__main__":
+    # a lot of code is out of a 'if __name__ == "__main__":' clause
+    print("gui_file.py is not meant to be imported.")
+    exit(1)
+
+
 import json
 import os
 import subprocess
@@ -72,14 +78,13 @@ opened_state = True
 git_activity = gitlog.plot_git_activity()
 project_registration_sheet = None
 project_removal_verification = None
-cloc_res = None
 
 cwd = os.getcwd()
 cloc_res = subprocess.check_output(["cloc", "--exclude-dir=venv", "--json", "--include-ext=py", "--by-file", cwd])
 cloc_res = json.loads(cloc_res)
 
 cloc_res = {k[len(cwd):] if k.startswith(cwd) else k: v for k, v in cloc_res.items() if k != "header"}
-# sum_line = cloc_res.pop("SUM")
+
 files = list(cloc_res.keys())
 cloc_res = {cat: [cloc_res[k].get(cat, None) for k in files] for cat in ['blank', 'comment', 'code', 'language']}
 cloc_res = {'files': files, **cloc_res}

@@ -4,15 +4,26 @@
     "type": "split",
     "children": [
       {
-        "id": "6947c4848069a3fa",
+        "id": "061e215b5c8721be",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Project Categorization.md",
+            "file": "Project Notes/_Top.md",
             "mode": "source",
+            "backlinks": false,
             "source": false
           }
+        }
+      },
+      {
+        "id": "7f8a2ffbf2751542",
+        "type": "leaf",
+        "pinned": true,
+        "state": {
+          "type": "graph",
+          "state": {},
+          "pinned": true
         }
       }
     ],
@@ -69,7 +80,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Project Categorization.md",
+                "file": "Project Notes/_Top.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,12 +98,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6947c4848069a3fa",
+  "active": "061e215b5c8721be",
   "lastOpenFiles": [
-    "Project Categorization.md",
-    "Top.md",
-    "Project Tracking.md",
-    "Testing.md",
-    "The GUI.md"
+    "Project Notes/_Top.md",
+    "Project Notes/Git Integration.md",
+    "Project Notes/Interaction Methods.md",
+    "Project Notes/Command Line Tool.md",
+    "Untitled.md",
+    "Templates/new_project_note.md",
+    "Project Notes/Pages Needed.md",
+    "Project Notes/The GUI.md",
+    "Project Notes/Project Categorization.md",
+    "Project Notes/Project Tracking.md"
   ]
 }
