@@ -1,4 +1,4 @@
-[[Summary]]
+[[Top]]
 
 # The GUI
 

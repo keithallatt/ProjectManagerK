@@ -90,7 +90,7 @@ cloc_res.set_index('files')
 
 def frame_commands():
     global git_activity, project_registration_sheet, project_removal_verification, cloc_res
-    gl.glClearColor(0.1, 0.1, 0.1, 1)
+    gl.glClearColor(0.06, 0.1, 0.2, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
     io = imgui.get_io()
@@ -313,7 +313,9 @@ def render_frame(impl, window, font):
 
     if font is not None:
         imgui.push_font(font)
+
     frame_commands()
+
     if font is not None:
         imgui.pop_font()
 
@@ -323,8 +325,6 @@ def render_frame(impl, window, font):
 
 
 def impl_glfw_init():
-    # print(str(width) + 'x' + str(height))
-
     window_name = f"Project Manager K - {app_version.replace('_', '.')}"
 
     if not glfw.init():

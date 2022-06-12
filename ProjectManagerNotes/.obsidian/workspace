@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Summary.md",
+            "file": "Project Categorization.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Summary.md",
+                "file": "Project Categorization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,9 +89,9 @@
   },
   "active": "6947c4848069a3fa",
   "lastOpenFiles": [
-    "Summary.md",
-    "Project Tracking.md",
     "Project Categorization.md",
+    "Top.md",
+    "Project Tracking.md",
     "Testing.md",
     "The GUI.md"
   ]

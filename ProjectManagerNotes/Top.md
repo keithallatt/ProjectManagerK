@@ -9,7 +9,6 @@ The goal of this software is to be able to track a variety of projects and relev
 
 [[Project Tracking]] allows for milestone planning over time; assigning 
 
-
 ## Project Status
 ####  *The Good*
 - The program has a nice-enough looking GUI that runs at ~30FPS
