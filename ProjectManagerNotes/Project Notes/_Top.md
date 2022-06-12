@@ -1,13 +1,20 @@
 # Project Manager K
+Created by: Keith Allatt | https://github.com/keithallatt | June 2022
 
 ### Goal
 The goal of this software is to be able to track a variety of projects and relevant milestones. 
 
 There are a variety of [[Interaction Methods]].
 
-[[Project Tracking]] allows for milestone planning over time; assigning severities to different milestone targets.
+[[Project Tracking]] allows for milestone planning over time; assigning severity to different milestone targets.
 
-View [[Pages Needed]] for more.
+View [[Pages Needed]] / [[_Top]] for more.
+
+Extra Links:
+- [https://techbeacon.com/app-dev-testing/50-tips-improving-your-software-development-game](Tips to improving software development)
+
+### Git Interaction
+#Git is very useful for working in teams, and turns a lightweight database API into a verifiable project manager. 
 
 ## Project Status
 ####  *The Good*
@@ -27,4 +34,12 @@ View [[Pages Needed]] for more.
 - [ ] Add table for schedule or use some other format.
 - [ ] ...
 
-
+## To Do
+- [ ] Documentation
+	- [ ] IO:
+		- [ ] [[Interaction Methods]]
+	- [ ] Project Tracking:
+		- [ ] [[Project Tracking]]
+	- [ ] Git Integration
+		- [ ] [[Git Integration]]
+- [ ] Write Tests

@@ -30,7 +30,7 @@ if os.getenv("XDG_SESSION_TYPE") == "wayland":
     os.environ["XDG_SESSION_TYPE"] = "x11"
 
 import glfw
-import OpenGL.GL as gl
+import OpenGL.GL as GL
 import imgui
 from imgui.integrations.glfw import GlfwRenderer
 import gitlog
@@ -95,8 +95,8 @@ cloc_res.set_index('files')
 
 def frame_commands():
     global git_activity, project_registration_sheet, project_removal_verification, cloc_res
-    gl.glClearColor(0.06, 0.1, 0.2, 1)
-    gl.glClear(gl.GL_COLOR_BUFFER_BIT)
+    GL.glClearColor(0.06, 0.1, 0.2, 1)
+    GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 
     io = imgui.get_io()
 
@@ -320,8 +320,8 @@ def render_frame(impl, window, font):
     impl.process_inputs()
     imgui.new_frame()
 
-    gl.glClearColor(0.1, 0.1, 0.1, 1)
-    gl.glClear(gl.GL_COLOR_BUFFER_BIT)
+    GL.glClearColor(0.1, 0.1, 0.1, 1)
+    GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 
     if font is not None:
         imgui.push_font(font)
@@ -346,7 +346,7 @@ def impl_glfw_init():
     glfw.window_hint(glfw.CONTEXT_VERSION_MAJOR, 3)
     glfw.window_hint(glfw.CONTEXT_VERSION_MINOR, 3)
     glfw.window_hint(glfw.OPENGL_PROFILE, glfw.OPENGL_CORE_PROFILE)
-    glfw.window_hint(glfw.OPENGL_FORWARD_COMPAT, gl.GL_TRUE)
+    glfw.window_hint(glfw.OPENGL_FORWARD_COMPAT, GL.GL_TRUE)
 
     window = glfw.create_window(int(width), int(height), window_name, None, None)
     glfw.make_context_current(window)

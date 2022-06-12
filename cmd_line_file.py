@@ -1,9 +1,7 @@
 """
-Command line integration for SSHstatuu access.
+Command line integration for SSH access.
 """
-import prompt_toolkit.document
-from PyInquirer import prompt, Separator
-from pprint import pprint
+from PyInquirer import prompt
 from database_api import DatabaseObject, db_file
 from prompt_toolkit.validation import Validator, ValidationError
 import subprocess

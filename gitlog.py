@@ -1,11 +1,8 @@
 import math
-import json
 import os
 import subprocess
 import re
 from datetime import datetime, date, timedelta
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 from database_api import DatabaseObject, db_file
 
 HOME_FOLDER = os.path.expanduser('~')
@@ -30,7 +27,7 @@ def get_git_log(project_index):
 
     os.chdir(ORIGINAL_CWD)
 
-    pattern = re.compile(r"commit ([0-9a-f]+)\nAuthor: (.+)(<.+>)\nDate:(.+)\n")
+    pattern = re.compile(r"commit ([\da-f]+)\nAuthor: (.+)(<.+>)\nDate:(.+)\n")
     re_res = re.finditer(pattern, res)
 
     starts = []
@@ -65,18 +62,18 @@ def get_git_log(project_index):
 
 
 def organize_by_date(log):
-    strptime_format = "%a %b %d %H:%M:%S %Y %z"
+    str_parse_time_format = "%a %b %d %H:%M:%S %Y %z"
     organized = {}
     for commit_id, tup in log.items():
-        auth, email, date = tup
-        date_obj = datetime.strptime(date, strptime_format)
+        auth, email, _date = tup
+        date_obj = datetime.strptime(_date, str_parse_time_format)
 
         org_by = date_obj.date()
 
         key = str(org_by)
 
         lst = organized.get(key, [])
-        lst.append((commit_id, auth, email, date, date_obj))
+        lst.append((commit_id, auth, email, _date, date_obj))
         organized[key] = lst
 
     return organized
@@ -95,7 +92,6 @@ def get_git_log_summary(start_date=None, end_date=None):
     all_orgd = {}
     for i in range(len(PROJECTS_FOLDERS)):
         lg = get_git_log(i)
-        # print(json.dumps(lg, indent=2))
         orgd = organize_by_date(lg)
 
         for key in orgd.keys():
@@ -105,9 +101,7 @@ def get_git_log_summary(start_date=None, end_date=None):
 
     orgd = all_orgd
 
-    days = sum([
-        [x[4].date() for x in v] for k, v in orgd.items()
-    ], [])
+    days = sum([[x[4].date() for x in v] for k, v in orgd.items()], [])
 
     commits_by_days = []
 
@@ -116,13 +110,6 @@ def get_git_log_summary(start_date=None, end_date=None):
     if end_date is None:
         end_date = max(days)
 
-    # start_of_year = date(start_date.year, 1, 1)
-    # end_of_year = date(end_date.year, 12, 31)
-
-    # print(start_of_year, '-', end_of_year)
-    # print(start_date, '-', end_date)
-
-    # for single_date in daterange(start_of_year, end_of_year):
     for single_date in daterange(start_date, end_date):
         key = single_date.strftime("%Y-%m-%d")
         num_commits = len(orgd.get(key, []))
@@ -142,10 +129,12 @@ def plot_git_activity():
     max_comms = max(cbd + [1])
     num_blocks = len(DITHERING_BLOCKS)
     possible = list(range(max_comms+1))
-    dithering_indices = list(map(lambda x: clamp(math.ceil(x * (num_blocks - 1) / max_comms), 0, num_blocks-1), cbd))
+    dithering_indices = list(map(
+        lambda x: clamp(math.ceil(x * (num_blocks - 1) / max_comms), 0, num_blocks-1), cbd))
     dithering_blocks = list(map(lambda di: DITHERING_BLOCKS[di], dithering_indices))
 
-    possible_indices = list(map(lambda x: clamp(math.ceil(x * (num_blocks - 1) / max_comms), 0, num_blocks-1), possible))
+    possible_indices = list(map(
+        lambda x: clamp(math.ceil(x * (num_blocks - 1) / max_comms), 0, num_blocks-1), possible))
     possible_blocks = list(map(lambda di: DITHERING_BLOCKS[di], possible_indices))
 
     dither_bounds = {x: (possible_blocks.index(x), max_comms - possible_blocks[::-1].index(x))

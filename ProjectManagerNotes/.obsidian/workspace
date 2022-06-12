@@ -6,10 +6,11 @@
       {
         "id": "061e215b5c8721be",
         "type": "leaf",
+        "dimension": 36.91823899371069,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Project Notes/_Top.md",
+            "file": "Project Notes/Command Line Tool.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -19,6 +20,7 @@
       {
         "id": "7f8a2ffbf2751542",
         "type": "leaf",
+        "dimension": 63.081761006289305,
         "pinned": true,
         "state": {
           "type": "graph",
@@ -51,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#Git",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,46 +71,22 @@
   "right": {
     "id": "c6d96e677d6a2100",
     "type": "split",
-    "children": [
-      {
-        "id": "a612a954504eb92f",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "1bcd48d37ee93967",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Project Notes/_Top.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": false
-              }
-            }
-          }
-        ]
-      }
-    ],
+    "children": [],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
   "active": "061e215b5c8721be",
   "lastOpenFiles": [
-    "Project Notes/_Top.md",
-    "Project Notes/Git Integration.md",
-    "Project Notes/Interaction Methods.md",
     "Project Notes/Command Line Tool.md",
-    "Untitled.md",
-    "Templates/new_project_note.md",
-    "Project Notes/Pages Needed.md",
+    "Project Notes/_Top.md",
+    "Project Notes/VCS Locations.md",
     "Project Notes/The GUI.md",
-    "Project Notes/Project Categorization.md",
-    "Project Notes/Project Tracking.md"
+    "Project Notes/Projects.md",
+    "Project Notes/Project Registration and Updating.md",
+    "Project Notes/Project Tracking.md",
+    "Project Notes/Git Integration.md",
+    "GitHub.md",
+    "Project Notes/To Do.md"
   ]
 }

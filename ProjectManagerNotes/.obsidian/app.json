@@ -3,5 +3,12 @@
   "livePreview": true,
   "fileSortOrder": "alphabetical",
   "alwaysUpdateLinks": true,
-  "showLineNumber": true
+  "showLineNumber": false,
+  "spellcheck": true,
+  "spellcheckLanguages": [
+    "en-CA"
+  ],
+  "tabSize": 4,
+  "promptDelete": true,
+  "newFileLocation": "current"
 }
