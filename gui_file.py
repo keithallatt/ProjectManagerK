@@ -14,6 +14,9 @@ import json
 import os
 import subprocess
 import sys
+
+import pandas as pd
+
 from database_api import version as app_version
 from database_api import get_dbo_str, db_file, DatabaseObject
 # For Linux/Wayland users.
@@ -69,10 +72,24 @@ opened_state = True
 git_activity = gitlog.plot_git_activity()
 project_registration_sheet = None
 project_removal_verification = None
+cloc_res = None
+
+cwd = os.getcwd()
+cloc_res = subprocess.check_output(["cloc", "--exclude-dir=venv", "--json", "--include-ext=py", "--by-file", cwd])
+cloc_res = json.loads(cloc_res)
+
+cloc_res = {k[len(cwd):] if k.startswith(cwd) else k: v for k, v in cloc_res.items() if k != "header"}
+# sum_line = cloc_res.pop("SUM")
+files = list(cloc_res.keys())
+cloc_res = {cat: [cloc_res[k].get(cat, None) for k in files] for cat in ['blank', 'comment', 'code', 'language']}
+cloc_res = {'files': files, **cloc_res}
+
+cloc_res = pd.DataFrame(cloc_res)
+cloc_res.set_index('files')
 
 
 def frame_commands():
-    global git_activity, project_registration_sheet, project_removal_verification
+    global git_activity, project_registration_sheet, project_removal_verification, cloc_res
     gl.glClearColor(0.1, 0.1, 0.1, 1)
     gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
@@ -84,7 +101,7 @@ def frame_commands():
     restricted_flags = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_TITLE_BAR | imgui.WINDOW_NO_MOVE
     restricted_with_scroll = restricted_flags | imgui.WINDOW_ALWAYS_VERTICAL_SCROLLBAR
 
-    column_widths = [700, 750, 700, 400]
+    column_widths = [700, 750, 700, 850, 400]
     x_positions = [50]
     for x in column_widths[:-1]:
         x_positions.append(x_positions[-1] + x + 50)
@@ -258,6 +275,17 @@ def frame_commands():
 
     # column 4
     column_index += 1
+
+    imgui.set_next_window_size(column_widths[column_index], 400)
+    imgui.set_next_window_position(x_positions[column_index], height-450)
+    imgui.begin("cloc", flags=restricted_flags)
+
+    imgui.text(str(cloc_res))
+
+    imgui.end()
+
+    # column 5
+    column_index += 1
     imgui.set_next_window_size(column_widths[column_index], 50)
     imgui.set_next_window_position(x_positions[column_index], 50)
     imgui.begin("clock", flags=restricted_flags)
@@ -265,11 +293,6 @@ def frame_commands():
     now = datetime.now()
     fmt = now.strftime("%y/%m/%d - %H:%M:%S")
     imgui.text(f"{fmt} -- {io.framerate:.2f}fps")
-    imgui.end()
-
-    imgui.set_next_window_size(column_widths[column_index], height - 650)
-    imgui.set_next_window_position(x_positions[column_index], 150)
-    imgui.begin("filler 3", flags=restricted_flags)
     imgui.end()
 
     imgui.set_next_window_size(column_widths[column_index], 700)
