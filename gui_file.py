@@ -272,8 +272,8 @@ def frame_commands():
     imgui.begin("filler 3", flags=restricted_flags)
     imgui.end()
 
-    imgui.set_next_window_size(column_widths[column_index], 400)
-    imgui.set_next_window_position(x_positions[column_index], height-450)
+    imgui.set_next_window_size(column_widths[column_index], 700)
+    imgui.set_next_window_position(x_positions[column_index], height-750)
 
     imgui.begin("Git History", flags=restricted_flags)
     imgui.text(git_activity)

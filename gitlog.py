@@ -18,7 +18,7 @@ with DatabaseObject(db_file) as dbo:
         if os.path.exists(f"{location}/.git"):
             PROJECTS_FOLDERS.append(location)
 
-DITHERING_BLOCKS = list(".*:#")
+DITHERING_BLOCKS = list("_=/%#")
 
 
 def get_git_log(project_index):
@@ -51,8 +51,8 @@ def get_git_log(project_index):
         dates.append(match.group(4).strip())
 
     log = {
-        commit_id: (author, email, date)
-        for commit_id, author, email, date in zip(commit_ids, authors, author_emails, dates)
+        commit_id: (author, email, _date)
+        for commit_id, author, email, _date in zip(commit_ids, authors, author_emails, dates)
     }
 
     starts.append(len(res))
@@ -60,12 +60,6 @@ def get_git_log(project_index):
 
     for s, m, e in zip(starts[:-1], ends, starts[1:]):
         commits.append((res[s:m], res[m:e]))
-
-    # for commit in commits:
-    #     print("----***----")
-    #     print(commit[0].strip())
-    #     print("----")
-    #     print(commit[1])
 
     return log
 
@@ -145,27 +139,21 @@ def plot_git_activity():
     sd, ed = dr
     dates = [d for d in daterange(sd, ed)]
 
-    # x = dates
-    # y = cbd
-
-    # fig, ax = plt.subplots()
-
-    # plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%d/%m/%Y'))
-    # plt.gca().xaxis.set_major_locator(mdates.DayLocator())
-    # plt.plot(x, y)
-    # plt.gcf().autofmt_xdate()
-
-    num_ticks = 5
-    spacing = len(dates) // num_ticks
-
-    # ax.set_xticks([dates[0], *[dates[i] for i in range(spacing, len(dates) - spacing, spacing)], dates[-1]])
-
-    # plt.show()
-
     max_comms = max(cbd + [1])
     num_blocks = len(DITHERING_BLOCKS)
+    possible = list(range(max_comms+1))
     dithering_indices = list(map(lambda x: clamp(math.ceil(x * (num_blocks - 1) / max_comms), 0, num_blocks-1), cbd))
     dithering_blocks = list(map(lambda di: DITHERING_BLOCKS[di], dithering_indices))
+
+    possible_indices = list(map(lambda x: clamp(math.ceil(x * (num_blocks - 1) / max_comms), 0, num_blocks-1), possible))
+    possible_blocks = list(map(lambda di: DITHERING_BLOCKS[di], possible_indices))
+
+    dither_bounds = {x: (possible_blocks.index(x), max_comms - possible_blocks[::-1].index(x))
+                     for x in DITHERING_BLOCKS}
+
+    db_strs = {x: str(t[0]) if t[0] == t[1] else f"{t[0]}-{t[1]}" for x, t in dither_bounds.items()}
+
+    legend = "\n".join(map(lambda t: f"{t[0]}: {t[1]} commits", db_strs.items()))
 
     by_month = {}
     for d, nc in zip(dates, dithering_blocks):
@@ -178,7 +166,7 @@ def plot_git_activity():
     sorted_by_month.sort(key=lambda t: t[0])
     sorted_by_month = ["".join(t[1]) for t in sorted_by_month]
 
-    return "\n".join(sorted_by_month)
+    return "\n".join([f" -- {sd} -- "] + sorted_by_month + [f" -- {ed} -- ", '', legend])
 
 
 if __name__ == '__main__':
