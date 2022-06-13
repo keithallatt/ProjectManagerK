@@ -1,6 +1,8 @@
 Back: [[Project Tracking]]
+12th June 2022
 
 # Milestones
+
 Milestones are a good way of keeping track of a projects progress at a glance.
 
 ## Setting milestones

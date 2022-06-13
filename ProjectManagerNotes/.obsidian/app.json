@@ -10,11 +10,12 @@
   ],
   "tabSize": 4,
   "promptDelete": true,
-  "newFileLocation": "current",
+  "newFileLocation": "root",
   "pdfExportSettings": {
     "pageSize": "Letter",
     "landscape": false,
     "margin": "0",
     "downscalePercent": 100
-  }
+  },
+  "autoConvertHtml": true
 }

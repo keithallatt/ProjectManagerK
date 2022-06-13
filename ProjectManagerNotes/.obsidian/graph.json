@@ -1,37 +1,22 @@
 {
-  "collapse-filter": false,
+  "collapse-filter": true,
   "search": "",
-  "showTags": true,
+  "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": false,
-  "colorGroups": [
-    {
-      "query": "tag:#Git",
-      "color": {
-        "a": 1,
-        "rgb": 14701138
-      }
-    },
-    {
-      "query": "tag:#SQLite",
-      "color": {
-        "a": 1,
-        "rgb": 5401056
-      }
-    }
-  ],
-  "collapse-display": true,
+  "collapse-color-groups": true,
+  "colorGroups": [],
+  "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": -0.9,
-  "nodeSizeMultiplier": 2.32246313202247,
-  "lineSizeMultiplier": 1.7994294241573,
-  "collapse-forces": true,
-  "centerStrength": 0.749866452991453,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.48201953848745,
+  "lineSizeMultiplier": 1.89138453764528,
+  "collapse-forces": false,
+  "centerStrength": 1,
   "repelStrength": 20,
   "linkStrength": 1,
   "linkDistance": 30,
-  "scale": 1.4306957229364536,
-  "close": false
+  "scale": 0.6965497469694395,
+  "close": true
 }

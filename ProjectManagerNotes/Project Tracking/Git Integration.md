@@ -1,6 +1,8 @@
 Back: [[Project Tracking]]
+12th June 2022
 
 # Git Integration
+
 Using #Git allows me to globally commit, push and pull code for all projects simultaneously streamlines production when multiple projects are being developed in parallel.
 
 

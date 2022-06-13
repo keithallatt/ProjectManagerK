@@ -1,6 +1,8 @@
 Back: [[Projects]]
+12th June 2022
 
 # VCS Locations
+
 #Git repositories aren't only for cloned projects from GitHub. As a recent graduate of an Honours Bachelor of Science with High Distinction degree from the University of Toronto Mississauga (prev. Erindale), almost all of my experience with git has been cloning from GitHub or a repository hosted by the school, and repeating 
 ``` 
 > git add --all
@@ -26,3 +28,4 @@ and more frustratingly,
 
 ---
 
+Therefore I added [[Git Integration]] to my software.

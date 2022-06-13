@@ -1,5 +1,12 @@
 {
   "theme": "obsidian",
-  "cssTheme": "Panic Mode",
-  "baseFontSize": 30
+  "cssTheme": "ITS Theme",
+  "baseFontSize": 13,
+  "monospaceFontFamily": "PragmataPro Mono",
+  "textFontFamily": "PragmataPro",
+  "interfaceFontFamily": "PragmataPro",
+  "enabledCssSnippets": [
+    "font"
+  ],
+  "translucency": false
 }

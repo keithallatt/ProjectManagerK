@@ -1,6 +1,8 @@
 Back: [[Interaction Methods]]
+12th June 2022
 
-# The Command Line Tool
+# Command Line Tool
+
 Using `PyInquirer` to validate input as it comes in, which will allow for more sophisticated menu creation.
 
 - [x] Set up prompts for Project Registration
@@ -11,5 +13,4 @@ Using `PyInquirer` to validate input as it comes in, which will allow for more s
 - [x] Set up nested Validators for `git` 
 - [ ] Set up nested Validators for `registration`
 - [ ] Set up other `DatabaseObject` access prompts
-- [ ] 
 
