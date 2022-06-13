@@ -20,7 +20,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Top.md",
+            "file": "Home.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,7 +66,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 249.01324081420898
   },
   "right": {
     "id": "c6d96e677d6a2100",
@@ -82,7 +82,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Top.md",
+                "file": "Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
   },
   "active": "fc0136ec81fea0b3",
   "lastOpenFiles": [
-    "Top.md",
+    "Home.md",
     "Documentation/Unified Model.md",
     "Documentation/Documentation.md",
     "Untitled.md",
@@ -110,7 +110,6 @@
     "Interaction Methods/Interaction Methods.md",
     "Interaction Methods/The GUI.md",
     "Project Planning/Gantt Charts.md",
-    "Project Planning/Project Planning.md",
-    "Project Tracking/Bug Tracking.md"
+    "Project Planning/Project Planning.md"
   ]
 }
