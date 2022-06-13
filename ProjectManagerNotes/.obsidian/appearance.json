@@ -1,0 +1,12 @@
+{
+  "theme": "obsidian",
+  "cssTheme": "ITS Theme",
+  "baseFontSize": 13,
+  "monospaceFontFamily": "PragmataPro Mono",
+  "textFontFamily": "PragmataPro",
+  "interfaceFontFamily": "PragmataPro",
+  "enabledCssSnippets": [
+    "font"
+  ],
+  "translucency": false
+}
