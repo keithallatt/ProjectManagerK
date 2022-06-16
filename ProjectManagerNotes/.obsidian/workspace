@@ -19,7 +19,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Home.md",
+            "file": "Templates/SubsubfileTemplate.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -90,7 +90,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Home.md",
+                "file": "Templates/SubsubfileTemplate.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,15 +110,15 @@
   },
   "active": "88b51084e29c0e5f",
   "lastOpenFiles": [
+    "Templates/SubsubfileTemplate.md",
+    "Documentation/Documentation.md",
     "Home.md",
     "Key Performance Indicators/Key Performance Indicators.md",
     "Project Planning/Project Responsibilities.md",
     "Project Planning/Project Planning.md",
     "Documentation/Unified Model.md",
-    "Documentation/Documentation.md",
     "Untitled.md",
     "Interaction Methods/Command Line Tool.md",
-    "Interaction Methods/Interaction Methods.md",
-    "Interaction Methods/The GUI.md"
+    "Interaction Methods/Interaction Methods.md"
   ]
 }
