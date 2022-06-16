@@ -11,8 +11,7 @@
   "templater-obsidian:Templates/TopTemplate.md": [
     {
       "modifiers": [
-        "Mod",
-        "Shift"
+        "Ctrl"
       ],
       "key": "1"
     }
@@ -20,8 +19,7 @@
   "templater-obsidian:Templates/SubsubfileTemplate.md": [
     {
       "modifiers": [
-        "Mod",
-        "Shift"
+        "Ctrl"
       ],
       "key": "3"
     }
@@ -29,8 +27,7 @@
   "templater-obsidian:Templates/SubfileTemplate.md": [
     {
       "modifiers": [
-        "Mod",
-        "Shift"
+        "Ctrl"
       ],
       "key": "2"
     }
