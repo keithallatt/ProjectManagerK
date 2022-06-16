@@ -18,13 +18,8 @@
         "type": "leaf",
         "pinned": true,
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Home.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          },
+          "type": "empty",
+          "state": {},
           "pinned": true
         }
       }
@@ -82,7 +77,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +94,7 @@
     "width": 139.61520385742188,
     "collapsed": true
   },
-  "active": "fc0136ec81fea0b3",
+  "active": "7f8a2ffbf2751542",
   "lastOpenFiles": [
     "Home.md",
     "Documentation/Unified Model.md",
