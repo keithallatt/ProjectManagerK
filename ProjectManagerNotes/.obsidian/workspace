@@ -4,8 +4,9 @@
     "type": "split",
     "children": [
       {
-        "id": "88b51084e29c0e5f",
+        "id": "56d24539d43831d3",
         "type": "leaf",
+        "dimension": 99.99999999999999,
         "state": {
           "type": "markdown",
           "state": {
@@ -54,7 +55,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 249.01324081420898
+    "width": 372.00521087646484
   },
   "right": {
     "id": "c6d96e677d6a2100",
@@ -88,17 +89,16 @@
     "width": 139.61520385742188,
     "collapsed": true
   },
-  "active": "88b51084e29c0e5f",
+  "active": "56d24539d43831d3",
   "lastOpenFiles": [
     "Home.md",
-    "Home.md",
-    "Templates/SubsubfileTemplate.md",
-    "Documentation/Documentation.md",
-    "Key Performance Indicators/Key Performance Indicators.md",
-    "Project Planning/Project Responsibilities.md",
-    "Project Planning/Project Planning.md",
-    "Documentation/Unified Model.md",
-    "Untitled.md",
-    "Interaction Methods/Command Line Tool.md"
+    "Interaction Methods/Command Line Tool/Functions.md",
+    "Interaction Methods/Command Line Tool/Validation.md",
+    "Interaction Methods/Command Line Tool/Extensibility.md",
+    "Interaction Methods/Command Line Tool/Command Line Tool.md",
+    "Interaction Methods/Command Line Tool/Shortcuts.md",
+    "Interaction Methods/Command Line Tool/Mainloop.md",
+    "Project Planning/Gantt Charts.md",
+    "Key Performance Indicators/Key Performance Indicators.md"
   ]
 }

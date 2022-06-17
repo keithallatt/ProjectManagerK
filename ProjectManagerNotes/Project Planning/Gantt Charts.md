@@ -4,3 +4,19 @@ Back: [[Project Planning]]
 # Gantt Charts
 
 
+```
+class Responsibility:
+	- name
+	- duration
+	- timing:
+		- after_other_responsibility=None
+		- after_how_long=None
+
+
+class GanttChart:
+	...
+	def add_responsibility(*args):
+		...
+	
+```
+

@@ -3,8 +3,13 @@
 # Project Manager K
 Created by: Keith Allatt | https://github.com/keithallatt | June 2022
 
+### Some fun math :)
+
 > Proof that there exists irrational numbers $p$, $q$ exist such that $p^q$ is rational.
 > $(\sqrt{2}^{\sqrt{2}} \not\in \mathbb{Q} \implies (\sqrt{2}^{\sqrt{2}})^{\sqrt{2}} \in \mathbb{Q}) \implies (\exists p,q \not \in \mathbb{Q})(p^q \in \mathbb{Q})$
+> 
+> Proof that $e^x > 0$ for all $x \in \mathbb{R}$. 
+$\begin{align*} (\exists k > 0)(e^x = -k) &\implies (\exists k > 0)(\frac{1}{k}e^{x} = -1) \implies \\ (\exists k > 0)(\frac{1}{\sqrt{k}}e^{x/2})^2 = -1) &\implies (\exists y \in \mathbb{R})(y^2 = -1) \implies \perp)\end{align*}$
 
 
 ### Goal

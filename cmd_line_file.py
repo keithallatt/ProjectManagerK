@@ -1,9 +1,6 @@
 """
 Command line integration for SSH access.
 """
-import base64
-
-from numpy import base_repr as _gfb37
 from PyInquirer import prompt
 from database_api import DatabaseObject, db_file
 from prompt_toolkit.validation import Validator, ValidationError
@@ -12,7 +9,6 @@ import re
 import os.path
 import json
 import pandas as pd
-
 
 with DatabaseObject(db_file) as dbo:
     categories = dbo.get_categories()
@@ -184,7 +180,6 @@ main_loop_prompt = [
     }
 ]
 
-
 def mainloop_status(*_):
     with DatabaseObject(db_file) as _dbo:
         status_lines = []
@@ -272,6 +267,13 @@ def cloc_text(by_file=False):
     return cloc_res
 
 
+# Subroutines.
+mainloop_subroutines = {
+    'status': mainloop_status,
+    'git': mainloop_git
+}
+
+
 def main():
     startup_line = r"""
 __        _______ _     ____ ___  __  __ _____ 
@@ -306,7 +308,8 @@ __        _______ _     ____ ___  __  __ _____
         }
     ])
 
-    if _gfb37(13*37*61*(5*37*(2*3*5*5*5*(2*3*3*3*3*3+1)+1)+2), 7*2+2*11).lower() != _pass['password']:
+    # if _gfb37(13*37*61*(5*37*(2*3*5*5*5*(2*3*3*3*3*3+1)+1)+2), 7*2+2*11).lower() != _pass['password']:
+    if True:
         print("Invalid password")
         return
 
@@ -322,10 +325,7 @@ __        _______ _     ____ ___  __  __ _____
             break
         command = tokens.pop(0)
 
-        mainloop_func = {
-            'status': mainloop_status,
-            'git': mainloop_git
-        }.get(command, lambda x: None)
+        mainloop_func = mainloop_subroutines.get(command, lambda x: None)
         mainloop_func(tokens)
 
 

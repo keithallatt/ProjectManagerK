@@ -10,7 +10,7 @@
   ],
   "tabSize": 4,
   "promptDelete": true,
-  "newFileLocation": "root",
+  "newFileLocation": "current",
   "pdfExportSettings": {
     "pageSize": "Letter",
     "landscape": false,
