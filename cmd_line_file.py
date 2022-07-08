@@ -25,8 +25,7 @@ def gst(location, raw=False):
     """ get the git status of a project """
     cwd = os.getcwd()
     os.chdir(location)
-    res = subprocess.check_output(['git', 'status'])
-    res = res.decode('utf-8')
+    res = subprocess.getoutput('git status')
     os.chdir(cwd)
 
     if raw:
@@ -55,15 +54,10 @@ def git_func(location, function, flags=None, *args):
         output_lst += args
 
     cmd = " ".join(output_lst)
-    try:
-        cwd = os.getcwd()
-        os.chdir(location)
-        res = subprocess.getoutput(cmd)
-        # res = res.decode('utf-8')
-        os.chdir(cwd)
-    except subprocess.CalledProcessError as e:
-        print(cmd)
-
+    cwd = os.getcwd()
+    os.chdir(location)
+    res = subprocess.getoutput(cmd)
+    os.chdir(cwd)
 
     return res
 
@@ -259,7 +253,16 @@ def mainloop_git(tokens, *_):
             project_name = project_row['project_name']
             if project_name in project_names:
                 project_loc = project_row['project_location']
-                status = git_func(project_loc, "commit", "am", "Sample Commit Message")
+
+                commit_message = prompt([
+                    {
+                        'type': 'input',
+                        'message': '  Commit Message:',
+                        'name': 'commit_message',
+                    },
+                ])['commit_message']
+
+                status = git_func(project_loc, "commit", "am", commit_message)
                 if not tokens:
                     result.append(f"{project_name}: {status}")
                 else:
