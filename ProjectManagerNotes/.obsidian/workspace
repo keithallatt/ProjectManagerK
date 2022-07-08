@@ -4,16 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "56d24539d43831d3",
+        "id": "847085294ce15bf0",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Home.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
+          "type": "graph",
+          "state": {}
         }
       }
     ],
@@ -70,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,8 +82,9 @@
     "width": 139.61520385742188,
     "collapsed": true
   },
-  "active": "56d24539d43831d3",
+  "active": "847085294ce15bf0",
   "lastOpenFiles": [
+    "Project Tracking/Git Integration.md",
     "Home.md",
     "Interaction Methods/Command Line Tool/Functions.md",
     "Interaction Methods/Command Line Tool/Validation.md",

@@ -1,7 +1,9 @@
 """
 Command line integration for SSH access.
 """
-from PyInquirer import prompt
+import shlex
+
+from PyInquirer import prompt as prompt
 from database_api import DatabaseObject, db_file
 from prompt_toolkit.validation import Validator, ValidationError
 import subprocess
@@ -32,13 +34,33 @@ def gst(location, raw=False):
 
     gst_bits = set()
 
+    status_markers = ["modified:", "Untracked files", "Your branch is ahead of", "new file:", "renamed:", "deleted:"]
     for line in res.split("\n"):
-        for key, grep in zip(list("!?*+>x"), ["modified:", "Untracked files", "Your branch is ahead of",
-                                              "new file:", "renamed:", "deleted:"]):
+        for key, grep in zip(list("!?*+>x"), status_markers):
             if grep in line:
                 gst_bits.add(key)
 
     return "".join(gst_bits)
+
+
+def git_func(location, function, flags=None, *args):
+    # commit, pull, push
+    assert function in ['commit', 'pull', 'push']
+    args = list(map(lambda x: x.replace('"', '\"').replace('\\', '\\').join(["\"", "\""]), args))
+
+    output_lst = ['git', function]
+    if flags:
+        output_lst.append(f"-{flags}")
+    if args:
+        output_lst += args
+
+    cwd = os.getcwd()
+    os.chdir(location)
+    res = subprocess.check_output(output_lst)
+    res = res.decode('utf-8')
+    os.chdir(cwd)
+
+    return res
 
 
 class FilepathValidator(Validator):
@@ -78,7 +100,7 @@ class MainloopValidator(Validator):
         command = tokens.pop(0)
         post_command_argument = " ".join(tokens)
 
-        valid_commands = ['commit', 'pull', 'status']
+        valid_commands = ['commit', 'pull', 'push', 'status']
         if command not in valid_commands:
             raise ValidationError(message=f"unknown git command {repr(command)}", cursor_position=len(document.text))
 
@@ -180,6 +202,7 @@ main_loop_prompt = [
     }
 ]
 
+
 def mainloop_status(*_):
     with DatabaseObject(db_file) as _dbo:
         status_lines = []
@@ -216,13 +239,32 @@ def mainloop_git(tokens, *_):
     command = tokens.pop(0)
     with DatabaseObject(db_file) as _dbo:
         projects = _dbo.get_projects()
-        project_names = [row['project_name'] for row in projects]
+        project_names = list(map(lambda x: x.get("project_name", None), projects))
 
     if tokens:
         # implies there was an additional argument
         project_names = [" ".join(tokens)]
 
     if command == "commit":
+        result = []
+
+        for project_row in projects:
+            if tokens and " ".join(tokens) not in project_row.values():
+                continue
+            project_name = project_row['project_name']
+            if project_name in project_names:
+                project_loc = project_row['project_location']
+                status = git_func(project_loc, "commit", "am", "Sample Commit Message")
+                if not tokens:
+                    result.append(f"{project_name}: {status}")
+                else:
+                    dashes = '-' * len(project_name)
+                    result.append(f"{dashes}\n{project_name}\n{dashes}\n\n{status}\n")
+
+        final = "\n".join(result)
+
+        print(final)
+    elif command == "push":
         pass
     elif command == "pull":
         pass
@@ -230,15 +272,19 @@ def mainloop_git(tokens, *_):
         result = []
 
         for project_row in projects:
+            if tokens and " ".join(tokens) not in project_row.values():
+                continue
             project_name = project_row['project_name']
             if project_name in project_names:
                 project_loc = project_row['project_location']
-                status = gst(project_loc, raw=True)
-                result.append((project_name, '-'*len(project_name), status))
+                status = gst(project_loc, raw=bool(tokens))
+                if not tokens:
+                    result.append(f"{project_name}: {status}")
+                else:
+                    dashes = '-' * len(project_name)
+                    result.append(f"{dashes}\n{project_name}\n{dashes}\n\n{status}\n")
 
-        final = "\n\n".join([
-            f"{dashes}\n{name}\n{dashes}\n\n{g_stat}" for name, dashes, g_stat in result
-        ])
+        final = "\n".join(result)
 
         print(final)
 
@@ -275,17 +321,20 @@ mainloop_subroutines = {
 
 
 def main():
-    startup_line = r"__        _______ _     ____ ___  __  __ _____ " + "\n" \
-                   r"\ \      / / ____| |   / ___/ _ \|  \/  | ____|" + "\n" \
-                   r" \ \ /\ / /|  _| | |  | |  | | | | |\/| |  _|  " + "\n" \
-                   r"  \ V  V / | |___| |__| |__| |_| | |  | | |___ " + "\n" \
-                   r"   \_/\_/  |_____|_____\____\___/|_|  |_|_____|" + "\n" \
-                   r"           _  _______ ___ _____ _   _          " + "\n" \
-                   r"          | |/ / ____|_ _|_   _| | | |         " + "\n" \
-                   r"          | ' /|  _|  | |  | | | |_| |         " + "\n" \
-                   r"          | . \| |___ | |  | | |  _  |         " + "\n" \
-                   r"          |_|\_\_____|___| |_| |_| |_|         " + "\n"
+    startup_line = [r"__        _______ _     ____ ___  __  __ _____ ",
+                    r"\ \      / / ____| |   / ___/ _ \|  \/  | ____|",
+                    r" \ \ /\ / /|  _| | |  | |  | | | | |\/| |  _|  ",
+                    r"  \ V  V / | |___| |__| |__| |_| | |  | | |___ ",
+                    r"   \_/\_/  |_____|_____\____\___/|_|  |_|_____|",
+                    r"           _  _______ ___ _____ _   _          ",
+                    r"          | |/ / ____|_ _|_   _| | | |         ",
+                    r"          | ' /|  _|  | |  | | | |_| |         ",
+                    r"          | . \| |___ | |  | | |  _  |         ",
+                    r"          |_|\_\_____|___| |_| |_| |_|         "]
+    startup_line = "\n".join(startup_line)
+
     print(startup_line.strip(), end=("-"*47).join("\n\n"))
+
     _login = prompt([
         {
             'type': 'confirm',

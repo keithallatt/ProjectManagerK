@@ -49,9 +49,14 @@ Useful Links
 - [x] Add VCS to main project
 - [ ] Add Project Updating Functionality to GUI
 - [x] Update project board path to this obsidian vault
-- [ ] Add command line tool.
+- [x] Add command line tool.
+	- [ ] Add key functionality
+		- [ ] Git
+			- [ ] Pull
+			- [x] Status
+			- [ ] Commit
 - [ ] Add table for schedule or use some other format.
-- [ ] Customize colours of prompt in `PyInquirer`
+- [ ] Customise colours of prompt in `PyInquirer`
 - [ ] Documentation
 	- [ ] IO:
 	- [ ] Project Tracking:
