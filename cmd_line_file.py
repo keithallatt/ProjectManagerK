@@ -262,6 +262,8 @@ def mainloop_git(tokens, *_):
                     },
                 ])['commit_message']
 
+                print(commit_message)
+
                 status = git_func(project_loc, "commit", "am", commit_message)
                 if not tokens:
                     result.append(f"{project_name}: {status}")
