@@ -7,8 +7,13 @@
         "id": "847085294ce15bf0",
         "type": "leaf",
         "state": {
-          "type": "graph",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Home.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,15 +90,15 @@
   },
   "active": "847085294ce15bf0",
   "lastOpenFiles": [
-    "Project Tracking/Git Integration.md",
     "Home.md",
-    "Interaction Methods/Command Line Tool/Functions.md",
-    "Interaction Methods/Command Line Tool/Validation.md",
-    "Interaction Methods/Command Line Tool/Extensibility.md",
-    "Interaction Methods/Command Line Tool/Command Line Tool.md",
-    "Interaction Methods/Command Line Tool/Shortcuts.md",
-    "Interaction Methods/Command Line Tool/Mainloop.md",
-    "Project Planning/Gantt Charts.md",
-    "Key Performance Indicators/Key Performance Indicators.md"
+    "Projects/VCS Locations.md",
+    "Projects/Projects.md",
+    "Projects/Project Removal.md",
+    "Projects/Project Registration and Updating.md",
+    "Projects/Project Categorization.md",
+    "Projects/Project Boards.md",
+    "Projects/Features.md",
+    "Project Tracking/Project Validation On Load.md",
+    "Project Tracking/Project Tracking.md"
   ]
 }

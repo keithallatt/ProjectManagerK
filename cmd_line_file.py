@@ -244,41 +244,7 @@ def mainloop_git(tokens, *_):
         # implies there was an additional argument
         project_names = [" ".join(tokens)]
 
-    if command == "commit":
-        result = []
-
-        for project_row in projects:
-            if tokens and " ".join(tokens) not in project_row.values():
-                continue
-            project_name = project_row['project_name']
-            if project_name in project_names:
-                project_loc = project_row['project_location']
-
-                commit_message = prompt([
-                    {
-                        'type': 'input',
-                        'message': '  Commit Message:',
-                        'name': 'commit_message',
-                    },
-                ])['commit_message']
-
-                print(commit_message)
-
-                status = git_func(project_loc, "commit", "am", commit_message)
-                if not tokens:
-                    result.append(f"{project_name}: {status}")
-                else:
-                    dashes = '-' * len(project_name)
-                    result.append(f"{dashes}\n{project_name}\n{dashes}\n\n{status}\n")
-
-        final = "\n".join(result)
-
-        print(final)
-    elif command == "push":
-        pass
-    elif command == "pull":
-        pass
-    elif command == "status":
+    if command == "status":
         result = []
 
         for project_row in projects:
@@ -297,6 +263,42 @@ def mainloop_git(tokens, *_):
         final = "\n".join(result)
 
         print(final)
+        return
+
+    if command not in ['commit', 'pull', 'push']:
+        return
+
+    result = []
+    if command == "commit":
+        commit_message = prompt([
+            {
+                'type': 'input',
+                'message': '  Commit Message:',
+                'name': 'commit_message',
+            },
+        ])['commit_message']
+    else:
+        # to avoid warnings about use before reference
+        commit_message = ""  # if this accidentally got used, it'd get stopped down below
+
+    for project_row in projects:
+        if tokens and " ".join(tokens) not in project_row.values():
+            continue
+        project_name = project_row['project_name']
+        if project_name in project_names:
+            project_loc = project_row['project_location']
+            if command == "commit" and commit_message.strip():
+                status = git_func(project_loc, "commit", "am", project_loc + ": " + commit_message)
+            else:
+                status = git_func(project_loc, command)
+            if not tokens:
+                result.append(f"{project_name}: {status}")
+            else:
+                dashes = '-' * len(project_name)
+                result.append(f"{dashes}\n{project_name}\n{dashes}\n\n{status}\n")
+
+    final = "\n".join(result)
+    print(final)
 
 
 def cloc_text(by_file=False):

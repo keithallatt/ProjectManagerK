@@ -50,13 +50,14 @@ Useful Links
 - [ ] Add Project Updating Functionality to GUI
 - [x] Update project board path to this obsidian vault
 - [x] Add command line tool.
-	- [ ] Add key functionality
-		- [ ] Git
-			- [ ] Pull
+	- [x] Add key functionality
+		- [x] Git
+			- [x] Pull
+			- [x] Push
 			- [x] Status
-			- [ ] Commit
+			- [x] Commit
 - [ ] Add table for schedule or use some other format.
-- [ ] Customise colours of prompt in `PyInquirer`
+- [ ] ~~Customise colours of prompt in `PyInquirer`~~ (not possible with current version)
 - [ ] Documentation
 	- [ ] IO:
 	- [ ] Project Tracking:
