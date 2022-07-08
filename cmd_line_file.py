@@ -54,12 +54,14 @@ def git_func(location, function, flags=None, *args):
     if args:
         output_lst += args
 
-    print(output_lst)
-    cwd = os.getcwd()
-    os.chdir(location)
-    res = subprocess.check_output(output_lst)
-    res = res.decode('utf-8')
-    os.chdir(cwd)
+    try:
+        cwd = os.getcwd()
+        os.chdir(location)
+        res = subprocess.check_output(output_lst)
+        res = res.decode('utf-8')
+        os.chdir(cwd)
+    except subprocess.CalledProcessError:
+        print(os.listdir(location))
 
     return res
 
