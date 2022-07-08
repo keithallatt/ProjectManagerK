@@ -61,7 +61,7 @@ def git_func(location, function, flags=None, *args):
         res = res.decode('utf-8')
         os.chdir(cwd)
     except subprocess.CalledProcessError:
-        print(os.listdir(location))
+        print(location)
 
     return res
 
